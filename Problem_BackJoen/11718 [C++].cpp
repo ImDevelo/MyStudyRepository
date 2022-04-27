@@ -9,7 +9,7 @@ int main() {
 	while (true) {
 		getline(cin, str);
 
-		if (cin.eof())
+		if (str == "")
 			break;
 
 		cout << str << endl;
