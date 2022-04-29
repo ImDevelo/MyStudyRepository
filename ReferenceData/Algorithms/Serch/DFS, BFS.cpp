@@ -88,7 +88,7 @@ int main() {
     for (int i = 0; i < line; i++) {
         sort(graph[i].begin(), graph[i].end());
     }
-
+    
     //깊이탐색
     /* 
     //DFS_recursion(start, graph, check);
