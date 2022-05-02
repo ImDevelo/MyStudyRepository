@@ -1,3 +1,4 @@
+//그래로 출력하기 2
 #include <iostream>
 #include <string>
 using namespace std;
