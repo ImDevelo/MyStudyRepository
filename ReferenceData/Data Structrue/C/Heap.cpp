@@ -4,6 +4,8 @@
 #include<vector>
 using namespace std;
 
+
+//직접 구현
 class MyHeap {
 public:
     MyHeap() {
@@ -79,7 +81,6 @@ private:
     int length;
     int* heapList;
 };
-
 
 int main() {
     MyHeap heap;
