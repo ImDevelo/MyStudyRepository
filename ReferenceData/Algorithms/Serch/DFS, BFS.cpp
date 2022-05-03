@@ -85,9 +85,9 @@ int main() {
         graph[l].push_back(n); //양방향시 추가
     }
 
-    for (int i = 0; i < line; i++) {
-        sort(graph[i].begin(), graph[i].end());
-    }
+    //for (int i = 0; i < line; i++) {
+    //    sort(graph[i].begin(), graph[i].end());
+    //}
     
     //깊이탐색
     /* 

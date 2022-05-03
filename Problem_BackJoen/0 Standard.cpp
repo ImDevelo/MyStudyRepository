@@ -1,9 +1,9 @@
 #include<iostream>
 using namespace std;
 
-#define Max 1
+#define MAX 1
 int N;
-int arr[Max];
+int arr[MAX];
 
 
 void MySolution(){
