@@ -10,17 +10,7 @@ char map[MAX][MAX];
 int p[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
 int counting[MAX][MAX];
 
-void print(){
-    for(int i =0; i<N;i++){
-        for(int j =0; j<M;j++){
-            cout << counting[i][j];
-        }
-        cout << endl;
-    }   
-}
-
 //범위 검사
-
 bool overflow(int i, int j){
     if( i < 0  || i >= N || j < 0 || j >= M ){
         return false;
@@ -72,7 +62,6 @@ int main(){
     cin.tie(NULL);
     cout.tie(NULL);
     MySolution();
-
 }
 
 /* 파이썬
