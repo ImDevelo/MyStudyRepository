@@ -19,7 +19,6 @@ bool overflow(int r, int c){
         return false;
     }
     return true;
-
 }
 
 void BFS(int rStart, int cStart){
@@ -78,13 +77,8 @@ void MySolution(){
     for(int i =0; i<AreaList.size();i++){
         cout << AreaList[i] << endl;
     }
-
     // 찾고
     // 찾은 첫부분을 시작으로 
-
-    
-
-
 }
 
 int main(){
@@ -92,5 +86,4 @@ int main(){
     cin.tie(NULL);
     cout.tie(NULL);
     MySolution();
-
 }
