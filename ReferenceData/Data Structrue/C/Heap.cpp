@@ -89,9 +89,6 @@ int main() {
     heap.push(3);
     heap.push(10);
     heap.push(7);
-    heap.push(20);
-    heap.push(2);
-    heap.push(9);
     heap.push(1);
     heap.pop();
     cout << heap.top() << endl;
