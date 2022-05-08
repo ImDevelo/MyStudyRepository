@@ -18,7 +18,6 @@ public:
     }
     //힙에 필요한것이 무엇인가? what is nessary to Heap?
     void push(int n) {
-        cout << "X" << endl;
         heapList[++length] = n;
 
         for (int i = length; i > 1; i /= 2) {
@@ -82,7 +81,11 @@ private:
     int* heapList;
 };
 
+
+
+
 int main() {
+    //힙 구현
     MyHeap heap;
 
     heap.push(5);
@@ -92,4 +95,17 @@ int main() {
     heap.push(1);
     heap.pop();
     cout << heap.top() << endl;
+
+    // STL
+    priority_queue<int,vector<int>,greater<int>> q;
+    q.push(5);
+    q.push(3);
+    q.push(10);
+    q.push(7);
+    q.push(1);
+    q.pop();
+    cout << q.size() << endl;
+    cout << q.empty() << endl;
+    cout << q.top() << endl;
+
 }
