@@ -1,6 +1,5 @@
 //백조의 호수
 //https://www.acmicpc.net/problem/3197
-
 #include<iostream>
 #include<queue>
 using namespace std;

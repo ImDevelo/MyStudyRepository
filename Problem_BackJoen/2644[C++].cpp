@@ -1,5 +1,5 @@
-//컴퓨터 바이러스
-//https://www.acmicpc.net/problem/2606
+//촌수 계산
+//https://www.acmicpc.net/problem/2644
 #include<iostream>
 #include<queue>
 #include<algorithm>
