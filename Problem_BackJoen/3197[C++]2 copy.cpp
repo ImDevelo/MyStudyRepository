@@ -10,7 +10,9 @@ int LPoint[2][2];
 int p[4][2] = { {1,0},{-1,0},{0,1},{0,-1} };
 
 
-bool BFS(int startX, int startY) {
+
+
+bool BFS(int startX, int startY,int i) {
     bool** check = new bool* [R];
     for (int i = 0; i < R; i++) {
         check[i] = new bool[C];
@@ -39,7 +41,7 @@ bool BFS(int startX, int startY) {
                 else if (map[r2][c2] == 'X') {
                     map[r2][c2] = '.';
                 }
-                else if (map[r2][c2] == 'L' && check[r2][c2] != true) {
+                else if (map[r2][c2] == 'L' && check[r2][c2] != true && i == 0) {
                     return true;
                 }
             }
@@ -51,17 +53,22 @@ bool BFS(int startX, int startY) {
 
 bool MeltIce() {
     for (int i = 0; i < 2; i++) {
-        if (BFS(LPoint[i][0], LPoint[i][1])) {
+        if (BFS(LPoint[i][0], LPoint[i][1], i)) {
             return true;
         }
-    }
 
-    for (int i = 0; i < R; i++) {
-        for (int j = 0; j < C; j++) {
-            cout << map[i][j];
-        }
-        cout << endl;
+
+
+
+
     }
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                cout << map[i][j];
+            }
+            cout << endl;
+        }
+
     return false;
 }
 
