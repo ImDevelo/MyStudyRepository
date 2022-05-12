@@ -15,7 +15,7 @@ void MySolution(){
     sort(&arr[0], &arr[N]);
     
     for(int i =0;i<N;i++){
-        cout << arr[i] << endl;
+        cout << arr[i] << " ";
     }
 }
 
