@@ -30,9 +30,9 @@ void trowStick(int n,int rl){
         }
     }
 
-    if(cave[n+1][i] == 'x' ){
+    if(n+1<R && cave[n+1][i] == 'x' ){
         fallCristal(n+1,i);
-    }else if(cave[n][i+1] == 'x'){
+    }else if(i+1 && cave[n][i+1] == 'x'){
         fallCristal(n,i+1);
     }else if(cave[n][i-1] == 'x'){
         fallCristal(n,i-1);
