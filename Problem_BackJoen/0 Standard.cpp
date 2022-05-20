@@ -1,12 +1,6 @@
 #include<iostream>
 using namespace std;
 
-#define MAX 1
-int N;
-int arr[MAX];
-void MySolution();
-void AtherSolution();
-
 void MySolution(){
 
 }

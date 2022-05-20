@@ -38,6 +38,7 @@ void MySolution(){
     }else{
         cout << "NO";
     }
+
 }
 
 int main(){
@@ -45,4 +46,5 @@ int main(){
     cin.tie(NULL);
     cout.tie(NULL);
     MySolution();
+    
 }
