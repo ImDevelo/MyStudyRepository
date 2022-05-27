@@ -1,6 +1,5 @@
 //탈옥
 //https://www.acmicpc.net/problem/9376
-
 #include<iostream>
 #include<queue>
 using namespace std;
@@ -8,7 +7,6 @@ using namespace std;
 #define MAX 100
 char map[MAX][MAX];
 int R, C;
-
 
 void BFS(int rs, int cs){
     int p[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};

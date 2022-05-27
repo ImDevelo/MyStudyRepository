@@ -1,6 +1,5 @@
 //[가운데를 말해요]
 //https://www.acmicpc.net/problem/1655
-
 #include<iostream>
 #include<queue>
 #include<vector>

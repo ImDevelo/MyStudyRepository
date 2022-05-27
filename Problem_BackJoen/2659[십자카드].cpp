@@ -1,6 +1,5 @@
 //십자카드
 //https://www.acmicpc.net/problem/2659
-
 #include<iostream>
 using namespace std;
 
