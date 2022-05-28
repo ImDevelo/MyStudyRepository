@@ -8,9 +8,6 @@ using namespace std;
 int N;
 int counting;
 
-
-
-
 void NQueen(int queen,int rPoint, int cPoint, const bool chess[][MAX]){
     bool broad[MAX][MAX]; 
     for(int i=0; i<N;i++){

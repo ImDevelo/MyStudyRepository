@@ -1,3 +1,5 @@
+//이항계수1
+////https://www.acmicpc.net/problem/11050
 #include<iostream>
 using namespace std;
 #define Max 1

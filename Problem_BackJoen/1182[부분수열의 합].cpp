@@ -1,45 +1,41 @@
-//부분수열의 합
+//부분수열
 //https://www.acmicpc.net/problem/1182
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
-#define MAX 20
+int n, s, pos;
+vector<int>num;
 
-void MySolution(){
-    int N , S;
-    vector<int> mins;
-    vector<int> plus;
-    cin >> N >> S;
+void solution(vector<int>visit, int now, int start, int sum) {
+	
+	if (now > 1 && sum == s) {
+		pos++;
+	}
 
-    int temp;
-    for(int i=0; i<N;i++){
-        cin >> temp;
-        if(temp > 0){
-            plus.push_back(temp);
-        }else{
-            mins.push_back(temp);
-        }
-    }
-    while (true)
-    {
-    }
-    
-    
-
-    //조합의 방법
-
-
-
-
-
-
+	for (int i = start;i < num.size();i++) {
+		if (!visit[i]) {
+			visit[i] = true;
+			sum += num[i];
+			solution(visit, now + 1, i + 1, sum);
+			visit[i] = false;
+			sum -= num[i];
+		}
+	}
 }
 
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    MySolution();
+int main() {
+	cin >> n >> s;
+	
+	for (int i = 0,t=0;i < n;i++) {
+		cin >> t;
+		num.push_back(t);
+	}
+	sort(num.begin(), num.end());
+	solution(vector<int>(n+1,0),1,0,0);
+	
+	cout << pos;
+
 
 }

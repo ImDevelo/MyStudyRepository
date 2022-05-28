@@ -1,4 +1,4 @@
-//11660
+//구간합 구하기
 //https://www.acmicpc.net/problem/11660
 #include<iostream>
 using namespace std;

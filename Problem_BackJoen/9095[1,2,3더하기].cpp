@@ -23,10 +23,6 @@ void MySolution(){
     // 1 1 2 2 -> 
     // 확률?
     // 
-
-
-
-
 }
 
 int main(){
