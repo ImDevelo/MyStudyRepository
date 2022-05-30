@@ -31,7 +31,7 @@ void DFS_stack(int start, vector<int> graph[], bool check[]) {
     while (!s.empty())
     {
         current_node = s.top();
-        //다음 노드를 탐색, 방문하였다면 패스 방문하지 않았다면 스택에 넣고 출력하고 끝냅니다.
+        //다음 노드를 탐색, 방문하였다면 패스 / 방문하지 않았다면 스택에 넣고 출력하고 끝냅니다.
         s.pop();
 
         for (int index = 0; index < graph[current_node].size(); index++) {
