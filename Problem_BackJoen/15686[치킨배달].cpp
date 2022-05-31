@@ -12,15 +12,15 @@ int N,M;
 vector<pair<int,int>> shop;
 vector<Home> h;
 int list[14];
-int citydistace;
+int citydistace = 0;
 
 class Home{
 public:
-    Home(int r, int c){
+    Home(int r, int c){ //생성자
         point = {r,c};
     }
-
-    void setDistace(const vector<pair<int,int>> p, int size){    
+    void setDistace(const vector<pair<int,int>> p, int size){
+        //현제 집과 모든 치킨집과의 거리 계산, vector로 저장    
         int disX, disY;
         for(int i=0; i < size;i++){
             disX = abs(point.first - p[i].first);
@@ -29,7 +29,9 @@ public:
         }
     }
     int getCloserStore(int arr[]){
+        //현제 집과 arr로 받은 치킨집 중 가장 가까운 거리 계산 
         int smaller = distance[arr[0]];
+        
         for(int i=1; i<M;i++){
             if(distance[arr[i]] < smaller){
                 smaller = distance[arr[i]];
@@ -37,6 +39,7 @@ public:
         }
         return smaller;
     }
+
 private:
     pair<int,int> point;
     vector<int> distance;
@@ -45,14 +48,15 @@ private:
 
 
 void select(int count, int start, int end){
+    //조합으로 치킨집 선택
     if(count == M){
         //뽑아낸 치킨집을 기준으로 가장 최적의 도시치킨거리 계산
         int sum = 0;
         for(int i=0; i<h.size();i++){
             sum += h[i].getCloserStore(list);
         }
-        if(sum < citydistace){
-            citydistace = sum;
+        if(citydistace == 0 || sum < citydistace){
+          citydistace = sum;
         }
     }else{
         for(int i=start; i<end;i++){
@@ -77,11 +81,11 @@ void MySolution(){
     }
 
     for(int i=0; i<h.size(); i++){
-        //i번째 집과 모든 치킨집과의 거리 저장
         h[i].setDistace(shop,shop.size());
     }
-    // m개의 가게 조합 선택
-    select(0, 0, M);
+    select(0, 0, (shop.size()-M+1));
+
+    cout << citydistace;
 }
 
 int main(){
