@@ -3,10 +3,12 @@
 #include<iostream>
 using namespace std;
 
-int commonMeasure(int n){
-    for(int i=2; i<=n ;i++){
-        if(n%i == 0){
-            return (n/i);
+int commonMeasure(int a, int b){
+    int x; 
+    if(a<b){x=a;}else{x=b;}
+    for(int i=x; i>=2 ;i--){
+        if(a%i == 0 && b%i == 0 ){
+            return i;
         }
     }
     return -1;
@@ -15,38 +17,10 @@ int commonMeasure(int n){
 void MySolution(){
     int N, M;
     cin >> N >> M;
-    
     int a = N, b = M;
-    
-    cout << a << b;
 
-    /*
-    while (true)
-    {
-        cout << a << b;
-        if(a == b){
-            cout << a << " ";
-            break;
-        }else if(a > b){
-            a = commonMeasure(a);
-        }else{
-            b = commonMeasure(b);
-        }
-        
-    }
-    */
-   for(int i=0; i<20;i++){
-               
-        if(a == b){
-            cout << a << " ";
-            break;
-        }else if(a > b){
-            a = commonMeasure(a);
-        }else{
-            b = commonMeasure(b);
-        }
-        cout << a << b << " ";
-   }
+    cout << commonMeasure(a,b);
+
 
     a = N; b = M;
     while (true)
