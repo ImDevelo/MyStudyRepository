@@ -8,6 +8,9 @@ X가 2로 나누어 떨어지면, 2로 나눈다.
 #include<iostream>
 using namespace std;
 
+#define MAX 1000001
+
+int arr[MAX];
 int counting = 0;
 
 void DFS(int n, int cnt){
@@ -16,13 +19,16 @@ void DFS(int n, int cnt){
             counting = cnt;
         }
     }else{
-
-        if(n%3 == 0){
-            DFS(n/3,cnt+1);
-        }else if(n%2 == 0){
-            DFS(n-1,cnt+1);
-            DFS(n/2,cnt+1);
-        }else{
+        if(arr[n-1] == 0 || arr[n-1] > cnt ){
+            arr[n-1] = cnt;
+            if(n%3 == 0 && n%2 == 0){
+                DFS(n/3,cnt+1);
+                DFS(n/2,cnt+1);
+            }else if(n%3 == 0){
+                DFS(n/3,cnt+1);
+            }else if(n%2 == 0){
+                DFS(n/2,cnt+1);
+            }
             DFS(n-1,cnt+1);
         }
     }
@@ -31,8 +37,10 @@ void DFS(int n, int cnt){
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
-    
     int N;
+    for(int i=0; i<MAX ; i++){
+        arr[i] = 0;
+    }
     cin >> N;
 
     DFS(N,0);
