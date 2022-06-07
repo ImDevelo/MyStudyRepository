@@ -1,4 +1,4 @@
-//수정렬하기
+//수 정렬하기
 //https://www.acmicpc.net/problem/2750
 #include<iostream>
 #include<algorithm>

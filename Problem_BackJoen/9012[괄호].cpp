@@ -15,7 +15,6 @@ bool temp(string* s){
         else if(s->at(j)==')'){
             close++;
         }
-
         if(open == close){
             isVPS = true;
         }else if(open > close){

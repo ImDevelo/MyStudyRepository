@@ -3,14 +3,11 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-
-
 #define MAX 100
+
 int N, M, H;
 int box[MAX][MAX][MAX];
 int p[6][3] = {{0,1,0},{0,0,1},{0,-1,0},{0,0,-1},{1,0,0},{-1,0,0}};
-
-
 
 bool overflow(int h, int n, int m){
     if(h < 0 || h >= H || n < 0 || n >= N || m < 0 || m >= M){
@@ -18,7 +15,6 @@ bool overflow(int h, int n, int m){
     }
     return true;
 }
-
 
 int BFS(){
     int day = 0;
@@ -39,15 +35,12 @@ int BFS(){
     if(unripenTomato == 0)
         return 0;
     
-
     while (!n.empty())
     {
-        
         int h1 = h.front();
         int n1 = n.front();
         int m1 = m.front();    
         h.pop(); n.pop(); m.pop();
-
 
         for(int i = 0; i < 6; i++){
             int h2 = h1 + p[i][0];
@@ -72,8 +65,6 @@ int BFS(){
     }else if(unripenTomato == 0){
         return day;
     }
-    
-    
 }
 
 
@@ -86,9 +77,7 @@ void MySolution(){
             }
         }
     }
-
     cout << BFS() << endl;
-
 }
 
 int main(){
