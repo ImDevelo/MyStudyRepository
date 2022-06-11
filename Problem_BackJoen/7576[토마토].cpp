@@ -5,17 +5,17 @@
 using namespace std;
 #define MAX 1000
 
+int N, M;
+int map[MAX][MAX];
+int d[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+int noRipen = 0, days = 0;
+queue<int> r, c;
+
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);  cout.tie(NULL);
-
-    int N, M;
-    int map[MAX][MAX];
-    int d[4][2] = {{1,0},{-1,0},{0,1},{1,0}};
-    int noRipen, days = 0;
-    queue<int> r, c;
-
-    cin >> N >> M;
+    
+    cin >> M >> N;
 
     for(int i=0; i<N; i++){
         for(int j=0, temp; j<M; j++){
@@ -31,6 +31,7 @@ int main(){
 
     if(noRipen == 0){
         cout << 0;
+        return 0;
     }
         
     while (!r.empty())
@@ -56,9 +57,8 @@ int main(){
         }
     }
     if(noRipen == 0){
-        cout << days;
+        cout << days - 1;
     }else{
         cout << -1;
     }
-
 }
