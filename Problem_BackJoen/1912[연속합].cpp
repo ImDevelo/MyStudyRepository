@@ -2,41 +2,35 @@
 //https://www.acmicpc.net/problem/
 #include<iostream>
 using namespace std;
-#define MAX 0
-
+#define MAX 100001
 
 void MySolution(){
-    bool inputPlus = false; // 양수값이 들어온 적이 있는지 판단 
-    bool inputSum = false; // 합이 결정됬는지 판단 이유: *1
-    int bestSum = 0;
-    int tempSum = 0;
-    int N;
-
+    int N, best = 0;
+    int arr[MAX];
+    int sumarr[MAX];
     cin >> N;
-    for(int i=0, input; i<N; i++){
-        cin >> input;
-
-        if(input >= 0){ //양수
-            inputPlus = true;
-            bestSum = true;
-            tempSum += input;
-            if(i == (N-1)){
-                if(bestSum < tempSum){
-                    bestSum = tempSum;
-                }
-            }
-        }else{//음수
-            if(inputPlus == false){ // 한번도 양수가 들어온적 없는경우
-                if(input < 0){//입력값 음수
-                    if(inputSum == false || bestSum < input){ // *1
-                        bestSum = input;
-                        inputSum = true;
-                    }
-                }
-            }
-        }
+    for(int i=0; i<N; i++){
+        cin >> arr[i];
+        sumarr[i] = 0;
     }
-    cout << bestSum;
+    best = arr[0];
+    int temp = arr[0];
+    for(int i=1; i<N; i++){
+        for(int j=i; j<N;j++){
+            temp += arr[j];
+            if(temp > sumarr[j]){
+                sumarr[j] = temp;
+                if(temp > best){
+                    best = temp;
+                }
+            }
+            cout << sumarr[j] << " ";
+        }
+        temp = 0;
+        cout << endl;
+    }
+    cout << best;
+
 }
 
 int main(){
