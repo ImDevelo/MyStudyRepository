@@ -14,6 +14,12 @@ void BFSCheese(int h) {
     bool check[MAX][MAX];
     r.push(h); c.push(h);
 
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            check[i][j] = false;
+        }
+    }
+
     while (!r.empty())
     {
         int r1 = r.front();

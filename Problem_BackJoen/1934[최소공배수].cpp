@@ -1,7 +1,9 @@
-//최대공약수와 최소공배수
-//https://www.acmicpc.net/problem/2609
+//최소공배수
+//https://www.acmicpc.net/problem/1934
 #include<iostream>
+#include<algorithm>
 using namespace std;
+#define MAX 0
 
 int Euclidean(int a, int b){
     int m = max(a,b);
@@ -13,17 +15,17 @@ int Euclidean(int a, int b){
 }
 
 void MySolution(){
-    int N, M;
-    cin >> N >> M;
-    int E = Euclidean(N,M);
+    int T, a, b;
+    cin >> T;
 
-    cout << E << " " << (N*M/E);
+    for(int i=0; i<T; i++){
+        cin >> a >> b;
+        cout << (a * b / Euclidean(a,b)) << " ";
+    }
 }
 
 int main(){
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    cin.tie(NULL);  cout.tie(NULL);
     MySolution();
-
 }

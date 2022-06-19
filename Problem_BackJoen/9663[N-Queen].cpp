@@ -1,23 +1,39 @@
 //N-Queen
 //https://www.acmicpc.net/problem/9663
 #include<iostream>
-#include<utility>
-#include<stack>
-#include<math.h>
 using namespace std;
-
 #define MAX 15
-int N;
-int counting;
 
-void NQueen(){
-    for(int r=0; r < N; r++){
-        broad[r][cPoint] = true;
-        for(int c=0; c < N; c++){
-            broad[rPoint][c] = true;
-            if(abs(r - rPoint) == abs(c - cPoint)){
-                broad[r][c] = true;
+int N;
+int counting = 0;
+int line[MAX];
+
+void NQueen(int cnt){
+    if(cnt == N){
+        counting++;
+        return;
+    }
+    bool q[MAX] = {0};
+    for(int i=0; i<N; i++){
+        
+        if(line[i] != -1){
+
+            q[i] = true; // i가 0일때
+
+            if(i + (cnt - line[i]) < N){ // 0+1-0 < N성립
+                q[i + (cnt - line[i])] = true; // q 0+1-0
             }
+            if( i - (cnt - line[i]) >= 0){//1-
+                q[i - (cnt - line[i])] = true;
+            }
+        }
+    }
+
+    for(int i=0;i<N;i++){
+        if(q[i] != true){
+            line[i] = cnt;
+            NQueen(cnt+1);
+            line[i] = -1;
         }
     }
 }
@@ -25,11 +41,9 @@ void NQueen(){
 void MySolution(){
     cin >> N;
     for(int i=0; i<N;i++){
-        for(int j=0; j<N;j++){
-            chess[i][j] = false;
-        }
+        line[i] = -1;
     }
-    NQueen();    
+    NQueen(0);    
     cout << counting;
 }
 

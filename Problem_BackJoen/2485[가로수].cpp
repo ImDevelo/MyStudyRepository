@@ -2,57 +2,37 @@
 //https://www.acmicpc.net/problem/2485
 #include<iostream>
 #include<algorithm>
-#include<vector>
 using namespace std;
-
-vector<long> v;
-vector<int> d;
-int N , max = 0;
-
-
-int A(int x){
-    for(int j=x-1; j>=1 ;j--){
-        if(x%j == 0){
-            return j;
-        }
-    }
-    return 1;
-}
+#define MAX 100000
 
 void MySolution(){
+    int N;
+    int U;  //가로수 거리의 최대공약수
+    int ans = 0; //답 
+    int arr[MAX];
+    int d[MAX];
+
     cin >> N;
-    for(int i=0, temp; i<N;i++){
-        cin >> temp;
-        v.push_back(temp);
+    for(int i=0; i<N;i++){
+        cin >> arr[i];
     }
-    sort(v.begin(), v.end());
-    for(int i=0; i<N-1;i++){
-        d.push_back(v.at(i+1)-v.at(i));
+
+    d[1] = (arr[1] - arr[0]);
+    U = d[1];
+    for(int i=2; i<N; i++){
+        d[i] = arr[i] - arr[i-1];
+        U = __gcd(U,d[i]);
     }
-    int x = d[0]; 
-    for(int i=1; i < N-1; i++){
-        if(d[i] % x != 0){
-            x = A(x);
-            i = 0; 
-        }
+
+    for(int i=1; i<N; i++){
+        ans += d[i] / U - 1;
     }
-    long point = v[0];
-    int counting = 0;
-    for(int i=1; i < N; i++){
-        point += x;
-        while (point != v[i])
-        {
-            point += x;
-            counting++;
-        }
-    }
-    cout << counting;
+    
+    cout << ans;
 }
 
 int main(){
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    cin.tie(NULL);  cout.tie(NULL);
     MySolution();
-
 }
