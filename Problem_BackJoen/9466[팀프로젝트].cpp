@@ -5,66 +5,76 @@
 using namespace std;
 #define MAX 100001
 
-int T, N;
 int arr[MAX];
-bool Tum[MAX];
+bool check[MAX];
 
-void findTum(int start) {
-    stack<int> s;
-    int index = start;
-    for (int i = 1; i <= N; i++) {
-        s.push(index);
-        index = arr[index];
-        if (index == start) {
-            int top;
-            while (!s.empty())
-            {
-                top = s.top();
-                Tum[top] = true;
-                s.pop();
-            }
-            return;
-        }
-        else if (Tum[index] == true) {
-            Tum[start] = false;
-            return;
+void TermProject(){
+    int N, result = 0;//, *arr; 
+    //bool* check;
+    cin >> N;
+
+ //   arr = new int[N];
+//    check = new bool[N];
+    for(int i=0,t; i<N; i++){
+        cin >> t;
+        arr[i] = (t-1);
+        check[i] = false;
+        if((t-1)==i){
+            check[i] = true;
         }
     }
-    Tum[start] = false;
+
+    //for(int i=0; i<N; i++){
+    //    cout << arr[i] + 1 << " (" << check[i] << ") ";
+    //} cout << endl;
+
+    stack<int> s;
+    for(int i=0; i<N; i++){
+        int count = 0;
+        if(check[i] == false){
+            int point = i, index = i;
+            for(int i=0; i<N; i++){
+                if(check[index] == true){
+                    point = index;
+                    //cout << "point:" << point+1 <<" break;" << endl;
+                    i=N;
+                    continue;
+                }
+                //cout << index + 1 << " to ";
+                s.push(index);
+                check[index] = true;
+                index = arr[index];
+                //cout << index + 1 << " ... ";
+            }
+            while (!s.empty())
+            {
+                count++;
+                if(s.top() == point){
+                    count = 0;
+                }
+                //cout << "pop " << s.top()+1 << " ";
+                s.pop();
+            }
+
+            //cout << endl;
+        }
+        result += count;
+    }
+
+    cout << result << "\n";
+
+    //delete arr;
+    //delete check;
     return;
 }
 
-void TumProject() {
-    cin >> N;
-    for (int i = 1, temp; i <= N; i++) {
-        cin >> temp;
-        arr[i] = temp;
-        Tum[i] = false;
-        if (temp == i) { // 자기자신이 팀인 경우
-            Tum[i] = true;
-        }
-    }
 
-    for (int i = 1; i <= N; i++) {
-        if (Tum[i] != true) {
-            findTum(i);
-        }
-    }
-
-    int noTum = 0;
-    for (int i = 1; i <= N; i++) {
-
-        if (Tum[i] == false) {
-            noTum++;
-        }
-    }
-    cout << noTum << endl;
-}
 
 void MySolution() {
+    int T;
     cin >> T;
     for (int i = 0; i < T; i++) {
-        TumProject();
+        TermProject();
     }
 }
 
