@@ -23,8 +23,6 @@ void MySolution(){
             }
         }
     }
-
-
 }
 
 int main(){

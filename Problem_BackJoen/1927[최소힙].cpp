@@ -24,8 +24,6 @@ void MySolution(){
             }
         }
     }
-
-
 }
 
 int main(){
