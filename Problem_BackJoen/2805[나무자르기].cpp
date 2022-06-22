@@ -4,12 +4,14 @@
 using namespace std;
 #define MAX 1000000
 
+int tree[MAX];
+
 void MySolution(){
     int N;  //전체 나무갯수
     long M; //필요한 길이
-    long tree[MAX];
-    cin >> N >> M;
     int highest = 0;
+    cin >> N >> M;
+
     for(int i=0,temp; i<N; i++){
         cin >> temp;
         tree[i] = temp;
@@ -19,27 +21,24 @@ void MySolution(){
     }
     int start = 0;
     int end = highest;
-    int h, cut = 0;
-    while (true)
+    int ans = 0;
+    while (start <= end)
     {
-        if(start > end){
-            cout << h;
-            break;
-        }
-        h = (start + end) / 2;
+        int mid = (start + end) / 2; 
+        long miter = 0;
         for(int i=0; i<N; i++){
-            if(tree[i] > h){
-                cut += (tree[i] - h);
+            if(tree[i] > mid){
+                miter += (tree[i] - mid);
             }
         }
-        if(cut < M){
-            end = h-1;
+        if(miter >= M){
+            ans = mid;
+            start = mid + 1;
         }else{
-            start = h+1;
+            end = mid-1;  
         }
-
-        cut = 0;
     }
+    cout << ans;
 }
 
 int main(){
