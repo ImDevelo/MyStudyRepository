@@ -7,6 +7,9 @@ using namespace std;
 void MySolution(){
     int N, K;
     
+
+    
+
 }
 
 int main(){

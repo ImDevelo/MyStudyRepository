@@ -1,33 +1,39 @@
 //카드 정렬하기
 //https://www.acmicpc.net/problem/
 #include<iostream>
+#include<queue>
 #include<algorithm>
 using namespace std;
 #define MAX 100000
 
 void MySolution(){
-    int N;
-    int arr[MAX];
+    int N, ans = 0;
+    priority_queue<int,vector<int>,greater<int>> q;
 
     cin >> N;
-    for(int i=0; i<N; i++){
-        cin >> arr[i];
+    for(int i=0,t; i<N; i++){
+        cin >> t;
+        q.push(t);
     }
-    sort(&arr[0], &arr[N]);
 
-    int ans1 = 0, ans2 = 0;
+    if(N==1){
+        cout << 0;
+        return;
+    }
 
-    ans1 += (arr[0]*(N-1) + arr[1]*(N-1));
-    for(int i=2 ;i<N; i++){
-        ans1 += (arr[i] * (N-i));
+    while (!q.empty())
+    {
+        int sum = q.top();
+        q.pop();
+        sum += q.top();
+        q.pop();
+        ans += sum;
+        if(q.empty()){
+            break;
+        }
+        q.push(sum);
     }
-    ans2 = 1000000;
-    
-    for(int i=0; i<N; i++){
-        ans2 += (arr[i]*(N-1));
-    }
-    
-    cout << min(ans1, ans2);
+    cout << ans;
 }
 
 int main(){
