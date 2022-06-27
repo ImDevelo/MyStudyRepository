@@ -8,24 +8,19 @@ using namespace std;
 #define MAX 1000
 
 int N, M;
-int map[MAX][MAX][2];
+int map[MAX][MAX];
 
 
 void print(){
     for(int i=0; i<N;i++){
         for(int j=0; j<M; j++){
-            if(map[i][j][0] == -1){
+            if(map[i][j] == -1){
                 cout << "# ";
             }else{
-                cout << map[i][j][0] << " ";
+                cout << map[i][j] << " ";
             }
         }
-        cout << "    ";
-        for(int k=0; k<M; k++){
-            cout << map[i][k][1] << " ";
-            
-        }
-        cout << endl;   
+        cout << endl;
     }
     cout << endl;
 }
@@ -35,7 +30,7 @@ void BFS(){
     queue<pair<int,bool>> r, c;
     r.push({0,false}); 
     c.push({0,false});
-    map[0][0][1] = 1;
+    map[0][0] = 1;
 
     //전부 부셔버리기
     while (!r.empty())
@@ -44,8 +39,7 @@ void BFS(){
         int c1 = c.front().first;
         bool broken = r.front().second; 
         r.pop(); c.pop();
-        
-
+    
         cout << "( " << r1 << " , " << c1 << " ) ->" << broken <<"\n";
         print();
         
@@ -55,27 +49,24 @@ void BFS(){
 
             if(r2 >= 0 && c2 >= 0 && r2 < N && c2 < M){
                 if(!broken){
-                    if(map[r2][c2][0] == 0 && (map[r2][c2][1] == 0 || map[r1][c1][1] < map[r2][c2][1])){ // 빈구역 채우기
-                        cout << r2 << " " << c2 << " | ";
+                    if(map[r2][c2] == 0 || (map[r1][c1]< map[r2][c2])){ // 빈구역 채우기
                         r.push({r2,false}); c.push({c2,false});
-                        map[r2][c2][1] = map[r1][c1][1]+1;
-                    }else if(map[r2][c2][0] == 1){
-                        cout << "*" << r2 << " " << c2 << " | ";
+                        map[r2][c2] = map[r1][c1]+1;
+                    }else if(map[r2][c2] == -1){
                         r.push({r2,true}); c.push({c2,true});
-                        map[r2][c2][1] = map[r1][c1][1]+1;
+                        map[r2][c2] = map[r1][c1]+1;
                     }
                 }else{
-                    if(map[r2][c2][0] == 0 && (map[r2][c2][1] == 0 || map[r1][c1][1] < map[r2][c2][1])){ // 빈구역 채우기
-                        cout << r2 << " " << c2 << " | ";
+                    if(map[r2][c2] == 0 || (map[r1][c1] < map[r2][c2])){ // 빈구역 채우기
                         r.push({r2,true}); c.push({c2,true});
-                        map[r2][c2][1] = map[r1][c1][1]+1;
+                        map[r2][c2] = map[r1][c1]+1;
                     }
                 }
             }
+            
         }
-        cout << endl;
-        cout << endl;
     }
+    
 }
 
 
@@ -89,13 +80,18 @@ int main(){
         for(int j=0; j<M; j++){
             cin >> c;
             if(c == '1'){
-                map[i][j][0] = -1;
-                map[i][j][1] = 0;
+                map[i][j] = -1;
             }else{
-                map[i][j][0] = 0;
-                map[i][j][1] = 0;
+                map[i][j] = 0;
             }
         }
     }
     BFS();
+
+    if(map[N-1][M-1] == 0){
+        cout << -1;
+    }else{
+        cout << map[N-1][M-1];
+    }
+
 }
