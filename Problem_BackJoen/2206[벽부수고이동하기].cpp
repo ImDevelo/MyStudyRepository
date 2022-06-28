@@ -36,7 +36,7 @@ void BFS(){
     r.push({0,false}); 
     c.push({0,false});
     map[0][0][1] = 1;
-
+    map[0][0][0] = 1;
     //전부 부셔버리기
     while (!r.empty())
     {
@@ -54,18 +54,22 @@ void BFS(){
             int c2 = c1 + d[i][1];
 
             if(r2 >= 0 && c2 >= 0 && r2 < N && c2 < M){
+
                 if(!broken){
+                    /*
                     if(map[r2][c2][0] == 0 && (map[r2][c2][1] == 0 || map[r1][c1][1] < map[r2][c2][1])){ // 빈구역 채우기
                         cout << r2 << " " << c2 << " | ";
                         r.push({r2,false}); c.push({c2,false});
+                        map[r2][c2][0] = map[r1][c1][0]+1;
                         map[r2][c2][1] = map[r1][c1][1]+1;
-                    }else if(map[r2][c2][0] == 1){
+                    }else if(map[r2][c2][0] == -1){
                         cout << "*" << r2 << " " << c2 << " | ";
                         r.push({r2,true}); c.push({c2,true});
                         map[r2][c2][1] = map[r1][c1][1]+1;
                     }
+                    */
                 }else{
-                    if(map[r2][c2][0] == 0 && (map[r2][c2][1] == 0 || map[r1][c1][1] < map[r2][c2][1])){ // 빈구역 채우기
+                    if(map[r2][c2][0] == 0){ // 빈구역 채우기
                         cout << r2 << " " << c2 << " | ";
                         r.push({r2,true}); c.push({c2,true});
                         map[r2][c2][1] = map[r1][c1][1]+1;
