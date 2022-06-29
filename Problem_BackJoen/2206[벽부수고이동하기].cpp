@@ -1,85 +1,49 @@
 //벽 부수고 이동하기
 //https://www.acmicpc.net/problem/2206
-
 #include<iostream>
 #include<queue>
-#include<utility>
+#include<algorithm>
 using namespace std;
 #define MAX 1000
 
 int N, M;
-int map[MAX][MAX][2];
-
-
-void print(){
-    for(int i=0; i<N;i++){
-        for(int j=0; j<M; j++){
-            if(map[i][j][0] == -1){
-                cout << "# ";
-            }else{
-                cout << map[i][j][0] << " ";
-            }
-        }
-        cout << "    ";
-        for(int k=0; k<M; k++){
-            cout << map[i][k][1] << " ";
-            
-        }
-        cout << endl;   
-    }
-    cout << endl;
-}
+int map[MAX][MAX];
+int visited[MAX][MAX][2];
+short d[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+queue<pair<pair<short,short>,bool>> q;
 
 void BFS(){
-    int d[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
-    queue<pair<int,bool>> r, c;
-    r.push({0,false}); 
-    c.push({0,false});
-    map[0][0][1] = 1;
-    map[0][0][0] = 1;
-    //전부 부셔버리기
-    while (!r.empty())
-    {
-        int r1 = r.front().first;
-        int c1 = c.front().first;
-        bool broken = r.front().second; 
-        r.pop(); c.pop();
-        
+    q.push({0,0},false);
+    visited[0][0][0];
 
-        cout << "( " << r1 << " , " << c1 << " ) ->" << broken <<"\n";
-        print();
-        
-        for(int i=0;i<4;i++){
+    while (q.empty())
+    {
+        int r1 = q.front().first.first;
+        int c1 = q.front().first.second;
+        int wall = q.front().second;
+
+        if(r1 == N-1 && c2 == M-1){
+            return 1;
+        }
+
+        for(int i=0 ;i<4; i++){
             int r2 = r1 + d[i][0];
             int c2 = c1 + d[i][1];
 
             if(r2 >= 0 && c2 >= 0 && r2 < N && c2 < M){
+                if(wall && map[r2][c2] == -1){ //벽을 부술수 있을때 벽수수고 다음칸
+                    
 
-                if(!broken){
-                    /*
-                    if(map[r2][c2][0] == 0 && (map[r2][c2][1] == 0 || map[r1][c1][1] < map[r2][c2][1])){ // 빈구역 채우기
-                        cout << r2 << " " << c2 << " | ";
-                        r.push({r2,false}); c.push({c2,false});
-                        map[r2][c2][0] = map[r1][c1][0]+1;
-                        map[r2][c2][1] = map[r1][c1][1]+1;
-                    }else if(map[r2][c2][0] == -1){
-                        cout << "*" << r2 << " " << c2 << " | ";
-                        r.push({r2,true}); c.push({c2,true});
-                        map[r2][c2][1] = map[r1][c1][1]+1;
-                    }
-                    */
-                }else{
-                    if(map[r2][c2][0] == 0){ // 빈구역 채우기
-                        cout << r2 << " " << c2 << " | ";
-                        r.push({r2,true}); c.push({c2,true});
-                        map[r2][c2][1] = map[r1][c1][1]+1;
-                    }
+                }else if(){// 이동 가능할 때 이동
+
                 }
+
             }
+
         }
-        cout << endl;
-        cout << endl;
+    
     }
+    return -1;
 }
 
 
@@ -89,15 +53,13 @@ int main(){
 
     cin >> N >> M;
     char c;
-    for(int i=0; i<N; i++){
-        for(int j=0; j<M; j++){
+    for(short i=0; i<N; i++){
+        for(short j=0; j<M; j++){
             cin >> c;
             if(c == '1'){
                 map[i][j][0] = -1;
-                map[i][j][1] = 0;
             }else{
                 map[i][j][0] = 0;
-                map[i][j][1] = 0;
             }
         }
     }
