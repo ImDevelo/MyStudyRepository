@@ -2,46 +2,47 @@
 //https://www.acmicpc.net/problem/2206
 #include<iostream>
 #include<queue>
+#include<vector>
+#include<string>
 #include<algorithm>
 using namespace std;
 #define MAX 1000
 
-int N, M;
-int map[MAX][MAX];
+short N, M;
 int visited[MAX][MAX][2];
-short d[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
-queue<pair<pair<short,short>,bool>> q;
 
-void BFS(){
-    q.push({0,0},false);
-    visited[0][0][0];
+int BFS(vector<string> &graph){
+    short d[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+    queue<pair<pair<short,short>,short>> q;
+    q.push({{0,0},1});
+    visited[0][0][1] = 1;
 
-    while (q.empty())
+    while (!q.empty())
     {
-        int r1 = q.front().first.first;
-        int c1 = q.front().first.second;
-        int wall = q.front().second;
-
-        if(r1 == N-1 && c2 == M-1){
-            return 1;
+        short r1 = q.front().first.first;
+        short c1 = q.front().first.second;
+        short wall = q.front().second;
+        q.pop();
+        if(r1 == N-1 && c1 == M-1){
+            return visited[r1][c1][wall];
         }
 
-        for(int i=0 ;i<4; i++){
-            int r2 = r1 + d[i][0];
-            int c2 = c1 + d[i][1];
+        for(short i=0 ;i<4; i++){
+            short r2 = r1 + d[i][0];
+            short c2 = c1 + d[i][1];
 
             if(r2 >= 0 && c2 >= 0 && r2 < N && c2 < M){
-                if(wall && map[r2][c2] == -1){ //벽을 부술수 있을때 벽수수고 다음칸
+                if(wall && graph[r2][c2] == '1'){ //벽을 부술수 있을때 벽수수고 다음칸으로 이동
+                    q.push({{r2,c2},0});
+                    visited[r2][c2][wall - 1] = visited[r1][c1][wall] + 1;
+                    //벽을 부순경우 MAP 1번으로 이동
                     
-
-                }else if(){// 이동 가능할 때 이동
-
+                }else if(graph[r2][c2] == '0' && visited[r2][c2][wall] == 0){// 벽을 부수지 않고 이동
+                    q.push({{r2,c2},wall});
+                    visited[r2][c2][wall] = visited[r1][c1][wall] + 1;
                 }
-
             }
-
         }
-    
     }
     return -1;
 }
@@ -52,16 +53,11 @@ int main(){
     cin.tie(NULL);  cout.tie(NULL);
 
     cin >> N >> M;
-    char c;
+    vector<string> grape(N);
     for(short i=0; i<N; i++){
-        for(short j=0; j<M; j++){
-            cin >> c;
-            if(c == '1'){
-                map[i][j][0] = -1;
-            }else{
-                map[i][j][0] = 0;
-            }
-        }
+        cin >> grape[i];
     }
-    BFS();
+    cout << BFS(grape);
+
+    return 0;
 }
