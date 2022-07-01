@@ -4,40 +4,23 @@
 using namespace std;
 #define MAX 41
 
-int arr[MAX];
-int Zero = 0, One = 0;
-
-
-
-int fibonacci(int n) {
-    if(){
-        
-    }
-
-
-
-    if (n == 0) {
-        printf("0");
-        Zero++;
-        return 0;
-    } else if (n == 1) {
-        printf("1");
-        One++;
-        return 1;
-    } else {
-        return fibonacci(n-1) + fibonacci(n-2);
-    }
-}
-
-void MySolution(){
-    cout << fibonacci(22) << endl;
-    cout << Zero << " " << One << endl;
-}
-
 int main(){
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    MySolution();
+    cin.tie(NULL); cout.tie(NULL);
 
+    int Zero[MAX], One[MAX];
+    int N, T;
+    cin >> T;   
+
+    Zero[0] = 1; Zero[1] = 0;
+    One[0] = 0; One[1] = 1;
+    for(int i=2; i<=40; i++){
+        Zero[i] = Zero[i-1] + Zero[i-2];
+        One[i] = One[i-1] + One[i-2];
+    }   
+
+    for(int i=0; i<T; i++){
+        cin >> N;
+        cout << Zero[N] << " " << One[N] << "\n";
+    }
 }

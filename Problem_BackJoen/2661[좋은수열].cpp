@@ -3,68 +3,52 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-vector<int> v;
+#define MAX 81
+
+int arr[MAX];
 int N;
-bool finded = false;
+bool findAns = false;
 
-int GoodNum(int n, int len){
-    int seq = (len+1)/2;
-    bool isGood = true;
-    for(int i=1; i<=seq; i++){
-        if(n == v[len - i]){
-            if(i == 1){
-                isGood = false;
-                break;
-            }
-            for(int j=1; j<=(i-1); j++){
-                if(v[len-j] == v[len-i-j]){
-                    isGood = false;
-                    continue;
-                }else{
-                    isGood = true;
-                    break;
-                }
-            }
-        }
-    }
-    if(isGood){
-        return n;
-    }else{
-        return 0;
-    }
-    
-}
-
-bool GoodSequence(int len) {
-    if(len == N){
-        vector<int>::iterator itr;
-        for(itr=v.begin(); itr!=v.end(); itr++){
-            cout << *itr;
-        }
+bool isGood(int len){
+    bool isDif;
+    if(len == 0){
         return true;
     }
-    for(int i=1; i<=3; i++){
-        int n = GoodNum(i,len);
-        if(n){
-            v.push_back(n);
-            if(GoodSequence(len+1)){
-                return true;
+    for(int i=1; i<=(len+1)/2; i++){
+        isDif = true;
+        if(arr[len] == arr[len-i]){
+            isDif = false;
+            for(int j=1; j<i; j++){
+                if(arr[len-j] != arr[len-i-j])
+                    isDif = true;
             }
-            v.pop_back();
+            if(isDif == false) 
+                return false;
         }
     }
-    return false;
+    return isDif;
 }
 
-void MySolution() {
-    cin >> N;
-    v.push_back(1);
-    GoodSequence(1);
+void GoodSequence(int len){
+    if(len == N){
+        for(int i=0; i<N; i++)
+            cout << arr[i];
+        findAns = true;
+        
+        return;
+    }
+    for(int i=1; i<=3; i++){
+        arr[len] = i;
+        if(isGood(len) && !findAns){
+            GoodSequence(len+1);
+        }
+    }
 }
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    MySolution();
+    cin.tie(NULL); cout.tie(NULL);
+
+    cin >> N;
+    GoodSequence(0);
 }
