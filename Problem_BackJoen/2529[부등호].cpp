@@ -14,14 +14,12 @@ void MySolution(){
     for(int i=0, temp; i<N; i++){
         cin >> temp;
         arr[i] = temp;
-        n[i] = 0;
+        n[i] = -1;
     }
 
+    for(int i=0 ;i<N;i++){
 
-
-
-
-
+    }
 }
 
 int main(){
