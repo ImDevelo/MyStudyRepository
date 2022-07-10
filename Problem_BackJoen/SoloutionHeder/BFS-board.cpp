@@ -6,28 +6,24 @@
 using namespace std;
 #define MAX 0
 
-int bfs(pair<int,int> start, pair<int,int> end, int* map[]){
+int bfs(pair<int,int> start){
     queue<pair<int,int>> q;
     bool visited[MAX][MAX];
     int d[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
-    q.push({start.frist,start.second});
+    q.push({start.first,start.second});
     visited[start.first][start.second] = true;
 
     while (!q.empty())
     {
         int r_current = q.front().first;
-        int c_current = q.front().first;
-
-        if(end.first-1 == r_current && end.second-1 == c_current){
-            //결과
-            return 1;
-        }
+        int c_current = q.front().second;
+        q.pop();
 
         for(int i=0; i<4; i++){
             int r_next = r_current + d[i][0];
             int c_next = c_current + d[i][1];
 
-            if(r_next >= 0 && c_next >= 0 && r_next < end.first && c_next < end.second){
+            if(r_next >= 0 && c_next >= 0 && r_next < R && c_next < C){
                 if(map[r_next][c_next] != true && visited[r_next][c_next] == false){
                     //노드 이동
                     q.push({r_next, c_next});
