@@ -8,7 +8,7 @@ using namespace std;
 
 int bfs(pair<int,int> start){
     queue<pair<int,int>> q;
-    bool visited[MAX][MAX];
+    bool visited[MAX][MAX] = {false};
     int d[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
     q.push({start.first,start.second});
     visited[start.first][start.second] = true;

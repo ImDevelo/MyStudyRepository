@@ -1,48 +1,42 @@
-//
-//https://www.acmicpc.net/problem/
+//스타트링크
+//https://www.acmicpc.net/problem/5014
 #include<iostream>
 #include<queue>
+#include<utility>
 using namespace std;
 #define MAX 1000001
 
 int max_floor, start, goal;
 int up, down;
-int dp[MAX] = { 0 };
 
-void BFS_queue() {
-    queue<int> q;
-    
-    q.push(start);
-    dp[start] = 1;
+void BFS_queue(){
+    queue<pair<int,int>> q;
+    bool visited[MAX] = {false};
+    q.push({start,0});
+    visited[start] = true;
 
-    while (!q.empty()) {
-        int node = q.front();
-        int count = dp[node];
-
+    while (!q.empty())
+    {
+        int node = q.front().first;
+        int count = q.front().second;
         q.pop();
 
-        if (node == goal) {
-            cout << (dp[node]-1);
+        if(node == goal){
+            cout << count;
             return;
         }
-        if (node + up <= max_floor && up != 0) {
-            if((dp[node + up] == 0 || dp[node + up] > count)){
-                dp[node + up] = count + 1;
-                q.push(node + up);
-            }
-            
+
+        if(up > 0 && node + up <= max_floor && visited[node + up] == false){
+            q.push({node + up, count + 1});
+            visited[node + up] = true;
         }
-        if (node - down > 0  && down != 0) {
-            if( (dp[node - down] == 0 || dp[node - down] > count)){
-                dp[node - down] = count + 1;
-                q.push(node - down);
-            }
+        if(down > 0 && node - down > 0 && visited[node - down] == false){
+            q.push({node - down, count + 1});
+            visited[node - down] = true;
         }
     }
     cout << "use the stairs";
-    return;
 }
-
 
 int main() {
     ios::sync_with_stdio(false);

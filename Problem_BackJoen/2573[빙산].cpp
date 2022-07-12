@@ -1,112 +1,97 @@
-//빙산
+//빙산  시간오래걸림(시간복잡도 n(2O^2))
 //https://www.acmicpc.net/problem/2573
 #include<iostream>
 #include<queue>
 using namespace std;
-
 #define MAX 300
-int ice[300][300];
-int N, M;
-int d[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
-int iceCount = 0;
 
-bool meltIce(){
-    bool check[MAX][MAX];
-    int counting = 0;
-    queue<int> R,C;
+int R, C;
+int map[MAX][MAX];
+int years = 1;
 
-    for(int i=0; i<N;i++){
-            for(int j =0; j<M;j++){
-                check[i][j] =false;
-            }
-        }
-    for(int i=1; i<N; i++){
-        for(int j=0; j<M;j++){
-            if(ice[i][j] != 0){
-                R.push(i); C.push(j);
-                check[i][j] = true;
-                counting++;
-                break;
-            }
-        }
-    }
+void bfs(pair<int, int> start, bool visited[][MAX], bool findMode) {
+    queue<pair<int, int>> q;
+    int d[4][2] = { {1,0},{-1,0},{0,1},{0,-1} };
+    q.push({ start.first,start.second });
+    visited[start.first][start.second] = true;
 
-    while (!R.empty())
+    while (!q.empty())
     {
-        int r1 = R.front();
-        int c1 = C.front();
-        R.pop(); C.pop();
+        int r_current = q.front().first;
+        int c_current = q.front().second;
+        q.pop();
 
-        for(int i=0; i<4;i++){
-            int r2 = r1 + d[i][0];
-            int c2 = c1 + d[i][1];
-            //현제 위치에서 녹이기
-            if(check[r2][c2] != true && ice[r2][c2] == 0 && ice[r1][c1] != 0){
-                ice[r1][c1]--;
-                if(ice[r1][c1] == 0){
-                    iceCount--; counting--;
+        for (int i = 0; i < 4; i++) {
+            int r_next = r_current + d[i][0];
+            int c_next = c_current + d[i][1];
+
+            if (r_next >= 0 && c_next >= 0 && r_next < R && c_next < C) {
+                if (findMode) {
+                    if (map[r_next][c_next] == 0 && visited[r_next][c_next] == false) {
+                        q.push({ r_next, c_next });
+                        visited[r_next][c_next] = true;
+                    }
+                    else if (map[r_next][c_next] != 0) {
+                        map[r_next][c_next] -= 1;
+                        if (map[r_next][c_next] == 0) {
+                            visited[r_next][c_next] = true;
+                        }
+                    }
+                }else {
+                    if (map[r_next][c_next] != 0 && visited[r_next][c_next] == false) {
+                        q.push({ r_next, c_next });
+                        visited[r_next][c_next] = true;
+                    }
                 }
-            }
-            if(check[r2][c2] != true && ice[r2][c2] != 0 ){
-                check[r2][c2] = true;
-                R.push(r2); C.push(c2);
-                counting++;
+
             }
         }
     }
-
-        
-    cout << iceCount << " " << counting << "\n";
-    if(iceCount != 0 && iceCount == counting){
-        return true;
-    }
-    return false;
 }
 
-void MySolution(){
-    cin >> N >> M;
-    
+bool iceMelt() {
+    bool visited[MAX][MAX] = { false };
 
-    for(int i=0; i<N;i++){
-        for(int j=0;j<M;j++){
-            int temp;
-            cin >> temp;
-            ice[i][j] = temp;
-            if(temp != 0){
-                iceCount++;
+    for (int i = 0; i < R; i++) {
+        for (int j = 0; j < C; j++) {
+            if (map[i][j] == 0 && visited[i][j] == false) {
+                bfs({i,j},visited, true);
             }
         }
     }
-    int year = 0;
-    while (true)
-    {
 
-        
-        if(meltIce()){
-            year++;
-        }else{
-            if(iceCount == 0)
-                cout << 0;
-            else
-                cout << year;    
-            break;
+    int icebergCount = 0;
+    for (int i = 0; i < R; i++) {
+        for (int j = 0; j < C; j++) {
+            if(map[i][j] != 0 && visited[i][j] ==false){
+                bfs({i,j},visited,false);
+                icebergCount++;
+            }
         }
-        
-
     }
-    
-    
-
-
+    if (icebergCount >= 2) {
+        cout << years;
+        return false;
+    }
+    else if (icebergCount == 0) {
+        cout << 0;
+        return false;
+    }
+    years++;
+    return true;
 }
 
-
-
-
-int main(){
+int main() {
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    MySolution();
+    cin.tie(NULL);  cout.tie(NULL);
 
+    cin >> R >> C;
+    for (int i = 0; i < R; i++) {
+        for (int j = 0; j < C; j++) {
+            cin >> map[i][j];
+        }
+    }
+
+    while (iceMelt());
+    
 }
