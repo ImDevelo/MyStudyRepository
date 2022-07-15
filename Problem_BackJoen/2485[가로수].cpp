@@ -14,7 +14,7 @@ void MySolution(){
 
     cin >> N;
     for(int i=0; i<N;i++){
-        cin >> arr[i];
+        cin >> arr[i]; 
     }
 
     d[1] = (arr[1] - arr[0]);
