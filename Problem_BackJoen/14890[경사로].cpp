@@ -47,7 +47,7 @@ int main() {
                 }else if (prev_hight < current_hight) {
                     if (down_check || level_road < L) {
                         step = N; open_road--; continue;
-                    }
+                    } 
                     level_road = 1;
                 }else if (prev_hight > current_hight) {
                     if (down_check || N-L < step) {
