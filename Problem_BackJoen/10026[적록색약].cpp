@@ -1,4 +1,4 @@
-//적록색약
+//적록색약 
 //https://www.acmicpc.net/problem/10026
 #include<iostream>
 #include<queue>
@@ -19,7 +19,7 @@ int bfs(pair<int,int> start, bool visited[][MAX], bool blindness){
     {
         int r_current = q.front().first;
         int c_current = q.front().second;
-        q.pop();
+        q.pop(); 
 
         for(int i=0; i<4; i++){
             int r_next = r_current + d[i][0];
