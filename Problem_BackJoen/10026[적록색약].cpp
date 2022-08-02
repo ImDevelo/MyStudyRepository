@@ -5,7 +5,7 @@
 #include<utility>
 using namespace std;
 #define MAX 100
-
+ 
 int N;
 char arr[MAX][MAX];
 
