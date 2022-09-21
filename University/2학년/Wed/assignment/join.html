@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우승화/60192218/웹프로그래밍 과제 #1</title>
+</head>
+<!--
+inputtype1: text, passward, tel, email 사용(4/3)
+inputtype2: number 사용 (1/1)
+inputtype3: radio, checkbox (2/2)
+inputtype4: -예약페이지에 구현-
+inputtype5: submit, reset 사용 (2/2)
+inputtype6: -예약페이지에 구현-
+label: 사용
+filedest, legend, textarea 사용(3/3)
+selec, option: -예약페이지에 구현-
+-->
+<body>
+    <header style="height: 80px;">
+        <div id = "titleBox">
+            <h1 id = "title"> Ddingji Study Cafe </h1>
+        </div>
+            <nav id = "topMunu">
+                <ul>
+                    <li><a href = "main.html"> Home </a></li>
+                    <li><a href = "join.html"> Join </a></li>
+                    <li><a href = "reserve.html"> Reserve </a></li>
+                </ul>
+            </nav><br>
+    </header>
+    <article> 
+        사용자 정보 : 김철수 | 고객센터
+        <button id = "logout" name = "logout">로그아웃</button>
+    </article>
+    <hr>
+    <main style="height: 550px; ">
+        <section>
+            <br>
+            <fieldset>
+                <legend>약관 동의</legend>
+                <textarea style="height: 150px; width: 210px; resize: none;" readonly>개인정보 내 맘대로 쓸거임 ^^ 동의 안하면 회원가입 못함</textarea><br>
+                <label>동의<input type="radio" name ="agree" value="yes"></label>
+                <label>동의 하지 않음<input type="radio" name ="agree" value="no" checked></label>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>회원가입</legend>
+                <label>이름 <input type = "text" autofocus required></label><br>
+                <label>아이디 <input type = "text" required></label><br>
+                <label>비밀번호 <input type = "password" required></label><br>
+                <label>전화번호 <input type="tel" required></label><br>
+                <label>이메일 <input type="email" required></label><br>
+                마케팅 정보 수신 동의(선택)<br>
+                <label> <input type="checkbox" name="ad" value="tp" checked>이메일수신 동의</label><br>
+                <label> <input type="checkbox" name="ad" value="em" checked>SNS수신 동의</label><br>
+                <input type="reset"> <input type="submit"> 
+            </fieldset>
+        </section>
+    </main>
+    <hr>
+    <footer style="height: 100px;">
+        <ul id = "topMunu">
+            <li><a>홈페이지 소개</a></li>
+            <li><a>개인정보 처리 방침</a></li>
+            <li><a>사이트맵</a></li>
+        </ul><br>
+        <ul id = "topMunu">
+            <li>tel) 010-0000-0000 | </li>
+            <li>e-mail) abcd@mail | </li>
+            <li>site) http://www.cafe.kr</li>
+        </ul>
+    </footer>
+</body>
+<style>
+    *{
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        float: left;
+        padding-right: 10px;
+    }
+</style>
+</html>
