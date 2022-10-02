@@ -8,8 +8,8 @@
 </head>
 <!--
 표: caption, tbody, thead, col, colgroup 사용
+열 그룹화, 확장, 캡션 사용
 inputtype4: time, date 사용(2/1)
-inputtype6: file, color 사용(1/1)
 select, option 사용(2/2)
 -->
 
@@ -20,20 +20,16 @@ select, option 사용(2/2)
         </div>
             <nav id = "topMunu">
                 <ul>
-                    <li><a href = "main.html"> Home </a></li>
-                    <li><a href = "join.html"> Join </a></li>
-                    <li><a href = "reserve.html"> Reserve </a></li>
+                    <li><a href = "main.html" target="_self"> Home </a></li>
+                    <li><a href = "join.html" target="_self"> Join </a></li>
+                    <li><a href = "reserve.html" target="_self"> Reserve </a></li>
                 </ul>
-            </nav><br>
+            </nav>
     </header>
-    <article> 
-        사용자 정보 : 김철수 | 고객센터
-        <button id = "logout" name = "logout">로그아웃</button>
-    </article>
     <hr>
     <main style="height: 550px; ">
         <section>
-            <table>
+            <table id ="priceTable">
                 <caption>가격표</caption>
                 <col style="width: 50px">
                 <colgroup span = "4" style="width: 80px;"></colgroup>
@@ -51,13 +47,14 @@ select, option 사용(2/2)
                     <td>1시간</td>
                     <td>10000원</td>
                     <td>12000원</td>
-                    <td colspan="2">20000원</td>
+                    <td>20000원</td>
+                    <td rowspan="2">40000원</td>
                 </tr>
                 <tr>
                     <td>2시간</td>
                     <td>20000원</td>
+                    <td>30000원</td>
                     <td>40000원</td>
-                    <td colspan="2">40000원</td>
                 </tr>
                 <tr>
                     <td>3시간</td>
@@ -70,8 +67,8 @@ select, option 사용(2/2)
             <fieldset>
                 <legend>예약하기</legend>
                 <label> 예약 날짜 <input type="date" required></label><br>
-                <label> 예약 시간 <input type="time" required></label><br>
-                <label> 예약 기간 <input type="number" max = "3" min="1" value="1">시간</label><br>
+                <label> 시작 시간 <input type="time" required></label><br>
+                <label> 예약 시간 <input type="number" max = "3" min="1" value="1">시간</label><br>
                 
                 <label for = "room"> 예약 호실 </label>
                 <select id = "room" name = "room">
@@ -80,17 +77,23 @@ select, option 사용(2/2)
                     <option value="room-3"> 3호실 </option>
                     <option value="room-4"> 4호실 </option>
                 </select><br>
-                <label> 첨부 파일 <input type="file"></label><br>
-                <input type="submit">
+                <input type="reset" value = "초기화"> 
+                <input type="submit" value = "제출"> 
             </fieldset>
         </section>
     </main>
+    <article> 
+        <a href="https://www.mju.ac.kr/sites/mjukr/intro/intro.html" target="_blank">
+            <img src="img/ad.png" alt = "명지대학교 광고" style="height: 80px;"><br>
+        </a>
+    </article>
     <hr>
     <footer style="height: 100px;">
         <ul id = "topMunu">
-            <li><a>홈페이지 소개</a></li>
-            <li><a>개인정보 처리 방침</a></li>
-            <li><a>사이트맵</a></li>
+            <li><a href="#" target="_self">홈페이지 소개</a></li>
+            <li><a href="#" target="_self">개인정보 처리 방침</a></li>
+            <li><a href="#" target="_self">사이트맵</a></li>
+            
         </ul><br>
         <ul id = "topMunu">
             <li>tel) 010-0000-0000 | </li>
