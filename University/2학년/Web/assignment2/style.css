@@ -1,0 +1,130 @@
+/*
+CSS 선택자 
+(기본 태그[V], 아이디[V], 클래스[ ], 기본속성[ ]) 모두사용 (4/0)
+
+그룹[] 자식[V] 하위[] 인접 형제[] 일반 형제[] 선택자[] - (2/0)
+가상 클래스 선택자: 링크[] 동적[] 입력요소[] 구조적[]
+
+ < CSS 텍스트 꾸미기 속성[V] >
+font-family 구글 웹 폰트 필수[V]
+font-size[V] font-weight[V] font-style[] color[V], text-align[V], text-decoration[] 
+
+ < CSS 박스 모델 박스[ ] >
+margin[V] padding[V] border[V] width/hight/box-sizing[], display[V]
+
+ < CSS 배경/위치/전환/애니메이션 속성 [ ]>
+backgroung-color[V] background-image(-position, -attachment 속성)
+position[ ], z-index[ ], float[V], clear[ ] - (2/0)
+transition(전환)[ ] animation[ ] - 두 기능중 1개
+*/
+
+body{
+    background-color: rgb(42, 42, 42);
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Secular One', sans-serif;
+}
+
+#container{
+    margin-left: 30px;
+    margin-right: 30px;
+    
+    display: grid;
+    grid-template-areas: 
+    "header header header"
+    "content content aside" 
+    "footer footer footer"
+    "article article article";
+}
+
+#header{
+    grid-area: header;
+    flex-direction: column;
+    height: 170px;
+}
+
+#content{
+    margin: 0px;
+    padding: 50px;
+    grid-area:content;
+    height: 800px;
+    background-color: rgb(255, 255, 255);
+}
+
+#footer{
+    grid-area:footer;
+    height: 150px;
+    background-color: rgb(108, 108, 108)
+}
+
+#aside{
+    grid-area:aside;
+    background-color: rgb(216, 16, 16)
+}
+
+#article{
+    grid-area:article;
+    margin: 0px;
+}
+
+#titleBox{
+    height: 120px;
+    display: flex;
+    padding-left: 100px;
+    text-align: center;
+    background-color: rgb(245, 208, 109);
+}
+
+#titleBox > #title{
+    font-size: 50px;
+    font-weight: 900;
+    color: rgb(55, 41, 14);
+}
+
+#topMenu{
+    height: 45px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(222, 49, 15);
+}
+
+#MenuList > li{
+    display: flex;
+    justify-content: center;
+    float: left;
+    height: 25px;
+    width: 70px;
+    padding: 9px;
+    border-left: solid 1px rgb(221, 221, 221);
+    border-right: solid 1px rgb(221, 221, 221);
+}
+
+#MenuList > li:hover{
+    background-color: brown;
+}
+
+#MenuList > li > a{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+}
+
+.infoLine > li{
+    float: left;
+    margin-right: 20px;
+    color: white;
+}
+.infoLine > li > a{
+    color: white;
+    font-size: 15px;
+}

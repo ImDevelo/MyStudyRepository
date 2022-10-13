@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>우승화/60192218/웹프로그래밍 과제 #1</title>
+</head>
+<body>
+    <header style="height: 80px;">
+        <div id = "titleBox">
+            <h1 id = "title"> Ddingji Study Cafe </h1>
+        </div>
+            <nav id = "topMunu">
+                <ul>
+                    <li><a href = "main.html" target="_self"> Home </a></li>
+                    <li><a href = "join.html" target="_self"> Join </a></li>
+                    <li><a href = "reserve.html" target="_self"> Reserve </a></li>
+                </ul>
+            </nav>
+    </header>
+    <hr>
+    <main style="height: 550px; ">
+        <section>
+            <br>
+            <fieldset>
+                <legend>약관 동의</legend>
+                <textarea style="height: 150px; width: 240px; resize: none;" readonly>개인정보 제 맘대로 쓸겁니다. ^^ 동의 안하면 회원가입 못합니다.</textarea><br>
+                <label>동의<input type="radio" name ="agree" value="yes"></label>
+                <label>동의 하지 않음<input type="radio" name ="agree" value="no" checked></label>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>회원가입</legend>
+                <label>이름 <input type = "text" autofocus required></label><br>
+                <label>아이디 <input type = "text" minlength="2" required></label><br>
+                <label>비밀번호 <input type = "password" minlength="6" required></label><br>
+                <label>전화번호 <input type="tel" required></label><br>
+                <label>이메일 <input type="email" required></label><br>
+                <label>학생증 첨부<input type="file"></label><br>
+                마케팅 정보 수신 동의(선택)<br>
+                <label> <input type="checkbox" name="ad" value="tp" checked>이메일수신 동의</label><br>
+                <label> <input type="checkbox" name="ad" value="em" checked>SNS수신 동의</label><br>
+                <input type="reset" value = "초기화"> 
+                <input type="submit" value = "제출"> 
+            </fieldset>
+        </section>
+    </main>
+    <article> 
+        <a href="https://www.mju.ac.kr/sites/mjukr/intro/intro.html" target="_blank">
+            <img src="img/ad.png" alt = "명지대학교 광고" style="height: 80px;"><br>
+        </a>
+    </article>
+    <hr>
+    <footer style="height: 100px;">
+        <ul id = "topMunu">
+            <li><a href="#" target="_self">홈페이지 소개</a></li>
+            <li><a href="#" target="_self">개인정보 처리 방침</a></li>
+            <li><a href="#" target="_self">사이트맵</a></li>
+            
+        </ul><br>
+        <ul id = "topMunu">
+            <li>tel) 010-0000-0000 | </li>
+            <li>e-mail) abcd@mail | </li>
+            <li>site) http://www.cafe.kr</li>
+        </ul>
+    </footer>
+</body>
+<style>
+    *{
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        float: left;
+        padding-right: 10px;
+    }
+</style>
+</html>

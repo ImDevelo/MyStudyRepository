@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>우승화/60192218/웹프로그래밍 과제 #1</title>
+</head>
+<body>
+    <header style="height: 80px;">
+        <div id = "titleBox">
+            <h1 id = "title"> Ddingji Study Cafe </h1>
+        </div>
+            <nav id = "topMunu">
+                <ul>
+                    <li><a href = "main.html" target="_self"> Home </a></li>
+                    <li><a href = "join.html" target="_self"> Join </a></li>
+                    <li><a href = "reserve.html" target="_self"> Reserve </a></li>
+                </ul>
+            </nav>
+    </header>
+    <hr>
+    <main style="height: 550px; ">
+        <section>
+            <table id ="priceTable">
+                <caption>가격표</caption>
+                <col style="width: 50px">
+                <colgroup span = "4" style="width: 80px;"></colgroup>
+                <thead>
+                <tr>
+                    <th>시간</th>
+                    <th>1호실</th>
+                    <th>2호실</th>
+                    <th>3호실</th>
+                    <th>4호실</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1시간</td>
+                    <td>10000원</td>
+                    <td>12000원</td>
+                    <td>20000원</td>
+                    <td rowspan="2">40000원</td>
+                </tr>
+                <tr>
+                    <td>2시간</td>
+                    <td>20000원</td>
+                    <td>30000원</td>
+                    <td>40000원</td>
+                </tr>
+                <tr>
+                    <td>3시간</td>
+                    <td>40000원</td>
+                    <td>60000원</td>
+                    <td colspan="2">70000원</td>
+                </tr>
+                </tbody>
+            </table>
+            <fieldset>
+                <legend>예약하기</legend>
+                <label> 예약 날짜 <input type="date" required></label><br>
+                <label> 시작 시간 <input type="time" required></label><br>
+                <label> 예약 시간 <input type="number" max = "3" min="1" value="1">시간</label><br>
+                
+                <label for = "room"> 예약 호실 </label>
+                <select id = "room" name = "room">
+                    <option value="room-1" selected> 1호실 </option>
+                    <option value="room-2"> 2호실 </option>
+                    <option value="room-3"> 3호실 </option>
+                    <option value="room-4"> 4호실 </option>
+                </select><br>
+                <input type="reset" value = "초기화"> 
+                <input type="submit" value = "제출"> 
+            </fieldset>
+        </section>
+    </main>
+    <article> 
+        <a href="https://www.mju.ac.kr/sites/mjukr/intro/intro.html" target="_blank">
+            <img src="img/ad.png" alt = "명지대학교 광고" style="height: 80px;"><br>
+        </a>
+    </article>
+    <hr>
+    <footer style="height: 100px;">
+        <ul id = "topMunu">
+            <li><a href="#" target="_self">홈페이지 소개</a></li>
+            <li><a href="#" target="_self">개인정보 처리 방침</a></li>
+            <li><a href="#" target="_self">사이트맵</a></li>
+            
+        </ul><br>
+        <ul id = "topMunu">
+            <li>tel) 010-0000-0000 | </li>
+            <li>e-mail) abcd@mail | </li>
+            <li>site) http://www.cafe.kr</li>
+        </ul>
+    </footer>
+</body>
+<style>
+    *{
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        float: left;
+        padding-right: 10px;
+    }
+    table{
+        border-collapse: collapse;
+    } 
+    td, th{
+        border: 1px solid rgb(133, 133, 133);
+    }
+</style>
+</html>
