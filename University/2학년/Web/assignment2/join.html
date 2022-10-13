@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>우승화/60192218/웹프로그래밍 과제 #1</title>
+    
+    <title>우승화/60192218/웹프로그래밍 과제 #2</title>
 </head>
 <body>
-    <header style="height: 80px;">
+<container id = "container">
+    <header id="header">
         <div id = "titleBox">
-            <h1 id = "title"> Ddingji Study Cafe </h1>
+            <h1 id = "title"> DDingji Study Cafe </h1>
         </div>
-            <nav id = "topMunu">
-                <ul>
-                    <li><a href = "main.html" target="_self"> Home </a></li>
-                    <li><a href = "join.html" target="_self"> Join </a></li>
-                    <li><a href = "reserve.html" target="_self"> Reserve </a></li>
-                </ul>
-            </nav>
+        <nav id = "topMenu">
+            <ul id = "MenuList">
+                <li><a href = "main.html" target="_self"> Home </a></li>
+                <li><a href = "join.html" target="_self"> Join </a></li>
+                <li><a href = "reserve.html" target="_self"> Reserve </a></li>
+            </ul>
+        </nav>
     </header>
-    <hr>
-    <main style="height: 550px; ">
+    <main id="content">
         <section>
             <br>
             <fieldset>
@@ -47,39 +51,26 @@
             </fieldset>
         </section>
     </main>
-    <article> 
-        <a href="https://www.mju.ac.kr/sites/mjukr/intro/intro.html" target="_blank">
-            <img src="img/ad.png" alt = "명지대학교 광고" style="height: 80px;"><br>
-        </a>
-    </article>
-    <hr>
-    <footer style="height: 100px;">
-        <ul id = "topMunu">
-            <li><a href="#" target="_self">홈페이지 소개</a></li>
-            <li><a href="#" target="_self">개인정보 처리 방침</a></li>
+    <aside id = "aside">
+
+    </aside>
+    <footer id ="footer">
+        <ul class = "infoLine">
+            <li><a href="#infomation" target="_self">홈페이지 소개</a></li><li>|</li>
+            <li><a href="#" target="_self">개인정보 처리 방침</a></li><li>|</li>
             <li><a href="#" target="_self">사이트맵</a></li>
-            
         </ul><br>
-        <ul id = "topMunu">
-            <li>tel) 010-0000-0000 | </li>
-            <li>e-mail) abcd@mail | </li>
+        <ul class = "infoLine">
+            <li>tel) 010-0000-0000 </li><li>|</li>
+            <li>e-mail) abcd@mail </li><li>|</li>
             <li>site) http://www.cafe.kr</li>
         </ul>
     </footer>
+    <article id = "article"> 
+        <a href="https://www.mju.ac.kr/sites/mjukr/intro/intro.html" target="_blank">
+            <img src="img/ad.png" alt = "명지대학교 광고"><br>
+        </a>
+    </article>
+</container>
 </body>
-<style>
-    *{
-        margin: 0;
-    }
-    a{
-        text-decoration: none;
-    }
-    ul{
-        list-style: none;
-    }
-    li{
-        float: left;
-        padding-right: 10px;
-    }
-</style>
 </html>

@@ -14,8 +14,8 @@ margin[V] padding[V] border[V] width/hight/box-sizing[], display[V]
 
  < CSS 배경/위치/전환/애니메이션 속성 [ ]>
 backgroung-color[V] background-image(-position, -attachment 속성)
-position[ ], z-index[ ], float[V], clear[ ] - (2/0)
-transition(전환)[ ] animation[ ] - 두 기능중 1개
+position[V], z-index[V], float[V], clear[ ] - (2/0)
+transition(전환)[ ] animation[V] - 두 기능중 1개
 */
 
 body{
@@ -29,6 +29,13 @@ a{
 
 h1, h2, h3, h4, h5, h6{
     font-family: 'Secular One', sans-serif;
+}
+
+table{
+    border-collapse: collapse;
+} 
+td, th{
+    border: 1px solid rgb(133, 133, 133);
 }
 
 #container{
@@ -53,7 +60,7 @@ h1, h2, h3, h4, h5, h6{
     margin: 0px;
     padding: 50px;
     grid-area:content;
-    height: 800px;
+    height: 1800px;
     background-color: rgb(255, 255, 255);
 }
 
@@ -127,4 +134,40 @@ ul{
 .infoLine > li > a{
     color: white;
     font-size: 15px;
+}
+
+#mainPageImage{
+    animation: imgani 1s;
+    filter: brightness(70%);
+    height: 600px;
+}
+
+#snsBox{
+    position: fixed;
+    z-index: 10;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    bottom: 20px;
+    right: 30px;
+}
+
+@keyframes imgani {
+    0%{opacity: 0.0;}
+    100%{
+        opacity: 1.0;
+    }
+}
+
+
+@media only screen and (max-width: 720px){
+    #container{
+        display: grid;
+        grid-template-areas: 
+        "header header header"
+        "aside aside aside"
+        "content content content" 
+        "footer footer footer"
+        "article article article";
+    }
 }
