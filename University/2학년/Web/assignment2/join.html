@@ -27,15 +27,14 @@
     </header>
     <main id="content">
         <section>
-            <br>
-            <fieldset>
+            <fieldset class = "fieldArea">
                 <legend>약관 동의</legend>
-                <textarea style="height: 150px; width: 240px; resize: none;" readonly>개인정보 제 맘대로 쓸겁니다. ^^ 동의 안하면 회원가입 못합니다.</textarea><br>
-                <label>동의<input type="radio" name ="agree" value="yes"></label>
-                <label>동의 하지 않음<input type="radio" name ="agree" value="no" checked></label>
+                <textarea class = "readTextBox" readonly>개인정보 제 맘대로 쓸겁니다. ^^ 동의 안하면 회원가입 못합니다.</textarea><br>
+                <label class ="ansCeackbox">동의<input type="radio" name ="agree" value="yes"></label>
+                <label class ="ansCeackbox">동의 하지 않음<input type="radio" name ="agree" value="no" checked></label>
             </fieldset>
             <br>
-            <fieldset>
+            <fieldset class = "fieldArea">
                 <legend>회원가입</legend>
                 <label>이름 <input type = "text" autofocus required></label><br>
                 <label>아이디 <input type = "text" minlength="2" required></label><br>
@@ -52,7 +51,10 @@
         </section>
     </main>
     <aside id = "aside">
-
+        <div id = "snsBox">
+            <img class = "snsImage" src="img/페이스북 아이콘.png"><br>
+            <img class = "snsImage" src="img/트위터 아이콘.png"><br>
+        </div>
     </aside>
     <footer id ="footer">
         <ul class = "infoLine">
@@ -68,7 +70,7 @@
     </footer>
     <article id = "article"> 
         <a href="https://www.mju.ac.kr/sites/mjukr/intro/intro.html" target="_blank">
-            <img src="img/ad.png" alt = "명지대학교 광고"><br>
+            <img src="img/ad.png" class="adimg" alt = "명지대학교 광고"><br>
         </a>
     </article>
 </container>

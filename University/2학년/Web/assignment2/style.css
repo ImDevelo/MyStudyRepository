@@ -1,24 +1,36 @@
 /*
 CSS 선택자 
-(기본 태그[V], 아이디[V], 클래스[ ], 기본속성[ ]) 모두사용 (4/0)
+(기본 태그[V], 아이디[V], 클래스[V], 기본속성[V]) 모두사용
 
-그룹[] 자식[V] 하위[] 인접 형제[] 일반 형제[] 선택자[] - (2/0)
-가상 클래스 선택자: 링크[] 동적[] 입력요소[] 구조적[]
+그룹[V] 자식[V] 하위[V] 인접 형제[] 일반 형제[] 선택자[] - 2가지 이상
+가상 클래스 선택자: 링크[V] 동적[V] 입력요소[V] 구조적[V] - 모두사용
 
  < CSS 텍스트 꾸미기 속성[V] >
 font-family 구글 웹 폰트 필수[V]
-font-size[V] font-weight[V] font-style[] color[V], text-align[V], text-decoration[] 
+font-size[V] font-weight[V] font-style[] color[V], text-align[V], text-decoration[V] 4가지 이상
 
  < CSS 박스 모델 박스[ ] >
-margin[V] padding[V] border[V] width/hight/box-sizing[], display[V]
+margin[V] padding[V] border[V] width/hight/box-sizing[V], display[V] 모두사용
+box-shadow[V] - 선택
 
- < CSS 배경/위치/전환/애니메이션 속성 [ ]>
-backgroung-color[V] background-image(-position, -attachment 속성)
-position[V], z-index[V], float[V], clear[ ] - (2/0)
+ < CSS 배경/위치/전환/애니메이션 속성 [V]>
+background-color[V] background-image(-position, -attachment 속성 필수)[V] 모두 사용 
+position[V], z-index[V], float[V], clear[ ] - 2가지 이상
 transition(전환)[ ] animation[V] - 두 기능중 1개
+
+ < CSS 레이아웃 속성 > 
+플렉스 박스[V] 그리드 레이아웃[V]
+반응형 미디어 쿼리[V]
 */
 
 body{
+    display: flex;
+    justify-content: center;
+    background-image: url('img/cafe_background.png'); 
+    /*출처: https://kr.freepik.com/premium-photo/blurred-cafe-background-coffee-shop-blur-background-with-bokeh_4260642.htm*/
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 100%;
     background-color: rgb(42, 42, 42);
     margin: 0px;
 }
@@ -37,37 +49,48 @@ table{
 td, th{
     border: 1px solid rgb(133, 133, 133);
 }
-
 #container{
-    margin-left: 30px;
-    margin-right: 30px;
-    
+    width: 1000px;
     display: grid;
     grid-template-areas: 
-    "header header header"
-    "content content aside" 
-    "footer footer footer"
-    "article article article";
+    "header header header header"
+    "content content content aside" 
+    "footer footer footer footer"
+    "article article article article";
 }
 
 #header{
     grid-area: header;
+    z-index: 5;
+    display: flex;
     flex-direction: column;
-    height: 170px;
+    height: 200px;
 }
 
 #content{
-    margin: 0px;
-    padding: 50px;
-    grid-area:content;
-    height: 1800px;
+    grid-area: content;
+    display: flex;
+    padding: 40px;
+    padding-left: 8%;
+    padding-right: 8%;
+    height: 2000px;
     background-color: rgb(255, 255, 255);
+}
+
+input[type]{
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+input[required]:focus{
+    background-color: rgb(252, 255, 206);
 }
 
 #footer{
     grid-area:footer;
+    padding: 10px;
     height: 150px;
-    background-color: rgb(108, 108, 108)
+    background-color: rgb(90, 90, 90)
 }
 
 #aside{
@@ -75,13 +98,19 @@ td, th{
     background-color: rgb(216, 16, 16)
 }
 
+section #priceTable{
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
 #article{
+    width: 100%;
     grid-area:article;
-    margin: 0px;
+    margin: 10px;
 }
 
 #titleBox{
-    height: 120px;
+    height: 150px;
     display: flex;
     padding-left: 100px;
     text-align: center;
@@ -89,9 +118,54 @@ td, th{
 }
 
 #titleBox > #title{
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 900;
     color: rgb(55, 41, 14);
+}
+
+#content h2{
+    font-size: 30px;
+    text-align: center;
+}
+
+#content p {
+    font-size: 20px;
+    line-height: 170%;
+}
+
+#content .btnArea{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+
+
+.btnStyle{
+    box-sizing: border-box;
+    background-color: rgb(255, 241, 118);
+    border: 3px solid rgba(255, 198, 10, 0.601);
+    border-radius: 10px;
+    float: left;
+    width: 220px;
+    height: 60px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 900;
+    margin: 10px;
+    color: black;
+    text-align: center;
+    box-shadow: 4px 4px rgb(167, 167, 167);
+}
+
+.btnStyle > a:link{
+    color: rgb(70, 68, 0);
+    
+}
+
+.btnStyle > a:visited{
+    color: rgb(187, 186, 139);
 }
 
 #topMenu{
@@ -104,6 +178,7 @@ td, th{
 #MenuList > li{
     display: flex;
     justify-content: center;
+    box-sizing: content-box;
     float: left;
     height: 25px;
     width: 70px;
@@ -120,6 +195,37 @@ td, th{
     color: white;
     font-size: 20px;
     text-align: center;
+}
+
+.fieldTitle ~ label{
+    margin-left: 20px;
+}
+
+
+.ansCeackbox{
+    font-size: 20px;
+}
+
+.ansCeackbox:checked{
+    font-weight: 900;
+    font-size: 30px;
+    color:red;
+}
+
+.fieldArea{
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+legend:first-of-type{
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.readTextBox{
+    height: 300px; 
+    width: 80%; 
+    resize: none;
 }
 
 ul{
@@ -139,35 +245,57 @@ ul{
 #mainPageImage{
     animation: imgani 1s;
     filter: brightness(70%);
-    height: 600px;
+    width:100%;
 }
 
 #snsBox{
     position: fixed;
+    display: flex;
+    flex-direction: column;
     z-index: 10;
-    height: 100px;
-    width: 100px;
-    background-color: rgb(255, 255, 255);
     bottom: 20px;
     right: 30px;
 }
 
+.snsImage{
+    height: 70px;
+}
+
+.adimg{
+    width: 100%;
+}
+
+
+
 @keyframes imgani {
-    0%{opacity: 0.0;}
+    0%{opacity: 0.2;}
     100%{
         opacity: 1.0;
     }
 }
 
 
-@media only screen and (max-width: 720px){
+@media only screen and (max-width: 1000px){
     #container{
+        width: 100%;
         display: grid;
         grid-template-areas: 
         "header header header"
-        "aside aside aside"
-        "content content content" 
+        "content content content"
+        "aside" "aside" "aside"
         "footer footer footer"
         "article article article";
+    }
+    #titleBox{
+        padding-left: 10%;
+    }
+
+    #content .btnArea{
+        width: 100%;
+        padding-left: 0%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+
     }
 }
