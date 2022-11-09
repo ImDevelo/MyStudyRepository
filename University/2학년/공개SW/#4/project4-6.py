@@ -13,5 +13,7 @@ for c in sentence :             # (1) 위 문장(sentence)를 한 글자씩 나�
     else :                      # (5) 존재한다면 해당 c문자(key)에 value값을 1증가 시킵니다.
         alphabet[c] += 1
 
+#
+
 alphabet = dict(sorted(alphabet.items()))
-print(alphabet.values())                 # (6) 딕셔너리를 출력합니다. {key(문자) : value(문자의 갯수)}
+print(alphabet)                 # (6) 딕셔너리를 출력합니다. {key(문자) : value(문자의 갯수)}

@@ -8,5 +8,5 @@ with open(file_name, "r") as f :
     for ch in text:
         if Alphabet.find(ch) > 0:
             count += 1
-        
+ 
 print("알파벳 개수는", count)
