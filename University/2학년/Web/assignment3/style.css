@@ -1,0 +1,410 @@
+/*
+CSS 선택자 
+(기본 태그[V], 아이디[V], 클래스[V], 기본속성[V]) 모두사용
+
+그룹[V] 자식[V] 하위[V] 인접 형제[] 일반 형제[V] 선택자[] - 2가지 이상
+가상 클래스 선택자: 링크[V] 동적[V] 입력요소[V] 구조적[V] - 모두사용
+
+ < CSS 텍스트 꾸미기 속성[V] >
+font-family 구글 웹 폰트 필수[V]
+font-size[V] font-weight[V] font-style[] color[V], text-align[V], text-decoration[V] 4가지 이상
+
+ < CSS 박스 모델 박스[V] >
+margin[V] padding[V] border[V] width/hight/box-sizing[V], display[V] 모두사용
+box-shadow[V] - 선택
+
+ < CSS 배경/위치/전환/애니메이션 속성 [V]>
+background-color[V] background-image(-position, -attachment 속성 필수)[V] 모두 사용 
+position[V], z-index[V], float[V], clear[ ] - 2가지 이상
+transition(전환)[ ] animation[V] - 두 기능중 1개
+
+ < CSS 레이아웃 속성 [V]> 
+플렉스 박스[V] 그리드 레이아웃[V]
+반응형 미디어 쿼리[V]
+*/
+
+body{
+    display: flex;
+    justify-content: center;
+    background-image: url('img/cafe_background.png'); 
+    /*출처: https://kr.freepik.com/premium-photo/blurred-cafe-background-coffee-shop-blur-background-with-bokeh_4260642.htm*/
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 100%;
+    background-color: rgb(42, 42, 42);
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Secular One', sans-serif;
+}
+
+table{
+    border-collapse: collapse;
+} 
+td, th{
+    border: 1px solid rgb(133, 133, 133);
+}
+#container{
+    width: 1400px;
+    display: grid;
+    grid-template-areas: 
+    "header header header header"
+    "content content content aside" 
+    "footer footer footer footer"
+    "article article article article";
+}
+
+#header{
+    grid-area: header;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+
+#content{
+    grid-area: content;
+    display: flex;
+    justify-content: baseline;
+    flex-direction: column;
+    padding: 40px;
+    padding-left: 8%;
+    padding-right: 8%;
+    height: 1600px;
+    background-color: rgb(255, 255, 255);
+}
+
+input[type]{
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+input[required]:focus{
+    background-color: rgb(252, 255, 206);
+}
+
+#footer{
+    grid-area:footer;
+    padding: 10px;
+    height: 150px;
+    background-color: rgb(90, 90, 90)
+}
+
+#aside{
+    grid-area:aside;
+    background-color: rgb(216, 16, 16)
+}
+
+#timeTableBtn{
+    background-color:rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    margin-right: 150px;
+    margin-left: 150px;
+    height: 60px;
+    font-size: 30px;
+    line-height : 60px;
+    
+    text-align: center;
+}
+
+
+#userProfile{
+    margin-left: 50px;
+    height: 100%;
+    width: 300px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    line-height : 46px;    
+}
+
+section{
+    width: 100%;
+}
+
+#priceTable{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 50px;
+    
+}
+
+#priceTable > caption{
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+#reserveHistory{
+    border: 1px solid rgb(90, 90, 90);
+    padding: 20px;
+    justify-content: baseline;
+    align-content: flex-start;
+}
+
+#priceTable th{
+    height: 30px;
+    background-color: blanchedalmond;
+}
+
+#loginBox{
+    margin: 10px;
+    width: 100%;
+    height: 100px;
+    background-color: aliceblue;
+}
+
+#priceTable td{
+    height: 40px;
+    padding: 8px;
+    text-align: center;
+}
+
+#article{
+    width: 100%;
+    grid-area:article;
+    margin: 10px;
+}
+
+#titleBox{
+    height: 150px;
+    display: flex;
+    padding-left: 100px;
+    text-align: center;
+    background-color: rgb(245, 208, 109);
+}
+
+#titleBox > #title{
+    font-size: 45px;
+    font-weight: 900;
+    color: rgb(55, 41, 14);
+}
+
+#content h2{
+    font-size: 30px;
+    text-align: center;
+}
+
+#content p {
+    font-size: 20px;
+    line-height: 170%;
+}
+
+#content .btnArea{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+#reservefield{
+    padding-left: 30px;
+}
+
+#room{
+    margin-bottom: 20px;
+}
+
+.btnStyle{
+    box-sizing: border-box;
+    background-color: rgb(255, 241, 118);
+    border: 3px solid rgba(255, 198, 10, 0.601);
+    border-radius: 10px;
+    float: left;
+    width: 220px;
+    height: 60px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 900;
+    margin: 10px;
+    color: black;
+    text-align: center;
+    box-shadow: 4px 4px rgb(167, 167, 167);
+}
+
+.btnStyle > a:link{
+    color: rgb(70, 68, 0);
+    
+}
+
+.btnStyle > a:visited{
+    color: rgb(187, 186, 139);
+}
+
+#topMenu{
+    height: 45px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(222, 49, 15);
+}
+
+#MenuList > li{
+    display: flex;
+    justify-content: center;
+    box-sizing: content-box;
+    float: left;
+    height: 25px;
+    width: 70px;
+    padding: 9px;
+    border-left: solid 1px rgb(221, 221, 221);
+    border-right: solid 1px rgb(221, 221, 221);
+}
+
+#MenuList > li:hover{
+    background-color: brown;
+}
+
+#MenuList > li > a{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.fieldTitle ~ label{
+    margin-left: 20px;
+}
+
+.ansCeackbox{
+    font-size: 20px;
+}
+
+.ansCeackbox:checked{
+    font-weight: 900;
+    font-size: 30px;
+    color:red;
+}
+
+.fieldArea{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 5px;
+    margin-top: 30px;
+    border: none;
+}
+
+#test{
+    background-color: brown;
+    width: 100%;
+    height: 50px;
+}
+
+legend:first-of-type{
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+
+.readTextBox{
+    height: 600px; 
+    width: 600px; 
+    margin-bottom: 20px;
+    resize: none;
+}
+
+.inputBox{
+    background-color: rgb(218, 218, 218);
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.inputBox .inputLine{
+    flex: 1;
+    padding-left: 20px;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.inputBox .label{
+    width: 200px;
+    
+    background-color: rgb(255, 255, 255);
+}
+
+.inputBox input{
+    width: "100%";
+    background-color: rgb(255, 255, 255);
+}
+
+ul{
+    list-style: none;
+}
+
+.infoLine > li{
+    float: left;
+    margin-right: 20px;
+    color: white;
+}
+.infoLine > li > a{
+    color: white;
+    font-size: 15px;
+}
+
+#mainPageImage{
+    animation: imgani 1s;
+    filter: brightness(70%);
+    width:100%;
+}
+
+#snsBox{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    bottom: 20px;
+    right: 30px;
+}
+
+.snsImage{
+    height: 70px;
+}
+
+.adimg{
+    width: 100%;
+}
+
+
+
+@keyframes imgani {
+    0%{opacity: 0.2;}
+    100%{
+        opacity: 1.0;
+    }
+}
+
+
+@media only screen and (max-width: 1000px){
+    #container{
+        width: 100%;
+        display: grid;
+        grid-template-areas: 
+        "header header header"
+        "content content content"
+        "aside" "aside" "aside"
+        "footer footer footer"
+        "article article article";
+    }
+    #titleBox{
+        padding-left: 10%;
+    }
+
+    #content .btnArea{
+        width: 100%;
+        padding-left: 0%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .readTextBox{ 
+        width: 90%;
+    }
+}

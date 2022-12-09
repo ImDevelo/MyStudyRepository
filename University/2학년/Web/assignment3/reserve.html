@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" async></script>
+    <script src="scriptReserve.js" async></script>
+    <title>우승화/60192218/웹프로그래밍 과제 #2</title>
+</head>
+<body>
+<container id = "container">
+    <header id="header">
+        <div id = "titleBox">
+            <h1 id = "title"> DDingji Study Cafe </h1>
+        </div>
+        <nav id = "topMenu">
+            <ul id = "MenuList">
+                <li><a href = "main.html" target="_self"> Home </a></li>
+                <li><a href = "join.html" target="_self"> Join </a></li>
+                <li><a href = "reserve.html" target="_self"> Reserve </a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="content">
+        <section>
+            <table id ="priceTable">
+                <caption>가격표</caption>
+                <col style="width: 15%; background-color: antiquewhite;">
+                <col class="roomCol" style="width: 20%;">
+                <col class="roomCol" style="width: 20%;">
+                <col class="roomCol" style="width: 20%;">
+                <col class="roomCol" style="width: 20%;">
+                <thead>
+                <tr>
+                    <th>시간</th>
+                    <th>1호실</th>
+                    <th>2호실</th>
+                    <th>3호실</th>
+                    <th>4호실</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1시간</td>
+                    <td>10000원</td>
+                    <td>12000원</td>
+                    <td>20000원</td>
+                    <td>40000원</td>
+                </tr>
+                <tr>
+                    <td>2시간</td>
+                    <td>20000원</td>
+                    <td>30000원</td>
+                    <td>40000원</td>
+                    <td>50000원</td>
+                </tr>
+                <tr>
+                    <td>3시간</td>
+                    <td>40000원</td>
+                    <td>60000원</td>
+                    <td>70000원</td>
+                    <td>80000원</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <form action = "#" method = "get">
+                <fieldset id="reservefield">
+                    <legend>예약하기</legend>
+                    <label> 예약 날짜 <input type="date" required></label><br>
+                    <label> 시작 시간 <input type="time" required></label><br>
+                    <label> 예약 시간 <input type="number" max = "3" min="1" value="1">시간</label><br>
+                    <label for = "room"> 예약 호실 </label>
+                    <select id = "room" name = "room">
+                        <option value="1" selected> 1호실 </option>
+                        <option value="2"> 2호실 </option>
+                        <option value="3"> 3호실 </option>
+                        <option value="4"> 4호실 </option>
+                    </select><br>
+                    <input type="reset" value = "초기화"> 
+                    <input type="submit" value = "제출">
+                </fieldset>
+            </form> 
+        </section>
+        <section>
+            <h1>예약 현황</h1>
+            <div id = "reserveHistory">
+                예약내역이 없습니다.
+            </div>
+        </section>
+    </main>
+    <aside id = "aside">
+
+
+    </aside>
+    <div id = "snsBox"></div>
+    <footer id ="footer">
+        <ul class = "infoLine">
+            <li><a href="#infomation" target="_self">홈페이지 소개</a></li><li>|</li>
+            <li><a href="#" target="_self">개인정보 처리 방침</a></li><li>|</li>
+            <li><a href="#" target="_self">사이트맵</a></li>
+        </ul><br>
+        <ul class = "infoLine">
+            <li>tel) 010-0000-0000 </li><li>|</li>
+            <li>e-mail) abcd@mail </li><li>|</li>
+            <li>site) http://www.cafe.kr</li>
+        </ul>
+    </footer>
+    <article id = "article"> 
+        <a href="https://www.mju.ac.kr/sites/mjukr/intro/intro.html" target="_blank">
+            <img src="img/ad.png" class="adimg" alt = "명지대학교 광고"><br>
+        </a>
+    </article>
+</container>
+</body>
+</html>
