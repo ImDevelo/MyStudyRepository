@@ -16,7 +16,7 @@ int main(int argc, char** argv)
         int ans;
 
 
-        printf("#%d %d",&test_case, &ans);
+        printf("#%d %d",test_case, ans);
 	}
 	return 0;
 }
