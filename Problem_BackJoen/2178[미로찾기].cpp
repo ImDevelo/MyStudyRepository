@@ -19,8 +19,8 @@ bool overflow(int i, int j){
 }
 
 void BFS(){
-    queue<int> R;
-    queue<int> C;
+    queue<int> R;// x
+    queue<int> C;// y
     map[0][0] = '0';
     counting[0][0] = 1;
     R.push(0); C.push(0);
