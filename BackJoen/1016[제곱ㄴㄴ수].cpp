@@ -48,7 +48,6 @@ void MySolution(){
     }
 
     cout << sum << endl;
-        
     cout << (maxN - minN + 1) - sum;
     
 }
