@@ -1,2 +1,4 @@
 /Nodejs/Beginer/node_modules/
-/Nodejs/Clone_codingJoom/node_modules/
+*/node_modules/
+*/x64/
+*/.vs
