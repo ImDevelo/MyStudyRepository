@@ -22,7 +22,6 @@ public:
 	void rotateCube(const char _face, const char _direction) {
 		char face = _face;
 		bool clockwiseRotation = (_direction == '+'); // 시계방향
-		cout << "돌리기!" << endl;
 		switch (face)
 		{
 		case 'U': //윗 면
@@ -99,51 +98,67 @@ public:
 		}
 	}
 
+	//0->5
+
 	void rotateY(int _side, bool _direct) {
 		const int side = _side, direct = _direct;
-		const int rotateRule[2][4] = { {0,5,2,4}, {0,4,2,5} };
+		const int rotateRule[2][4] = { {0,5,2,4}, {5,0,4,2} };
 		int tempCube[3];
-
-		for (int i = 0; i < 3; i++) {
-			tempCube[i] = cube[rotateRule[direct][0]][i][side ^ 2];
+		cout << "회전해!" << _side << " " << _direct << endl;
+		
+		if (_direct) {
+			for (int i = 0; i < 3; i++) { //?<-5번
+				tempCube[i] = cube[rotateRule[direct][0]][side ^ 2][i];
+			}
+			for (int i = 0; i < 3; i++) { //5번 <- 0번
+				cube[rotateRule[direct][0]][side ^ 2][i] = cube[rotateRule[direct][1]][i][side];
+			}
+			for (int i = 0; i < 3; i++) { //0번 <- 4번 
+				cube[rotateRule[direct][1]][i][side] = cube[rotateRule[direct][2]][side][2 - i];
+			}
+			for (int i = 0; i < 3; i++) { //4번 <- 2번
+				cube[rotateRule[direct][2]][side][i] = cube[rotateRule[direct][3]][i][side ^ 2];
+			}
+			for (int i = 0; i < 3; i++) {//2번<-?
+				cube[rotateRule[direct][3]][i][side ^ 2] = tempCube[i];
+			}
 		}
-		for (int i = 0; i < 3; i++) {
-			cube[rotateRule[direct][0]][i][side ^ 2] = cube[rotateRule[direct][1]][side][i];
-		}
-		for (int i = 0; i < 3; i++) {
-			cube[rotateRule[direct][1]][side][i] = cube[rotateRule[direct][2]][i][side];
-		}
-		for (int i = 0; i < 3; i++) {
-			cube[rotateRule[direct][2]][i][side] = cube[rotateRule[direct][3]][side ^ 2][i];
-		}
-
-		for (int i = 0; i < 3; i++) {
-			cube[rotateRule[direct][3]][side ^ 2][i] = tempCube[i];
+		else {
+			for (int i = 0; i < 3; i++) { //?<-5번
+				tempCube[i] = cube[rotateRule[direct][0]][side ^ 2][i];
+			}
+			for (int i = 0; i < 3; i++) { //5번 <- 0번
+				cube[rotateRule[direct][0]][side ^ 2][i] = cube[rotateRule[direct][1]][i][side];
+			}
+			for (int i = 0; i < 3; i++) { //0번 <- 4번 
+				cube[rotateRule[direct][1]][i][side] = cube[rotateRule[direct][2]][side][2 - i];
+			}
+			for (int i = 0; i < 3; i++) { //4번 <- 2번
+				cube[rotateRule[direct][2]][side][i] = cube[rotateRule[direct][3]][i][side ^ 2];
+			}
+			for (int i = 0; i < 3; i++) {//2번<-?
+				cube[rotateRule[direct][3]][i][side ^ 2] = tempCube[i];
+			}
 		}
 	}
-	// + 일때는 2/0 -> 3/2 -> 0/0
-	// - 일때는 0/0 -> 3/2 -> 2/0
+
 	void rotateZ(int _side, bool _direct) {
 		const int side = _side, direct = _direct;
-		const int rotateRule[2][4] = { {0,1,2,3}, {3,2,1,0} };
+		const int rotateRule[2][4] = { {0,1,2,3}, {2,1,0,3} };
 		int tempCube[3];
 
 		for (int i = 0; i < 3; i++) {
 			tempCube[i] = cube[rotateRule[direct][0]][i][side];
 		}
-
 		for (int i = 0; i < 3; i++) {
 			cube[rotateRule[direct][0]][i][side] = cube[rotateRule[direct][1]][i][side];
 		}
-
 		for (int i = 0; i < 3; i++) {
 			cube[rotateRule[direct][1]][i][side] = cube[rotateRule[direct][2]][i][side];
 		}
-
 		for (int i = 0; i < 3; i++) {
-			cube[rotateRule[direct][2]][i][side] = cube[rotateRule[direct][3]][i][side];
+			cube[rotateRule[direct][2]][i][side] = cube[rotateRule[direct][3]][2 - i][side ^ 2];
 		}
-
 		for (int i = 0; i < 3; i++) {
 			cube[rotateRule[direct][3]][2 - i][side ^ 2] = tempCube[i];
 		}
@@ -178,11 +193,10 @@ void TestCase() {
 	for (int i = 0; i < N; i++) {
 		char c[2];
 		cin >> c[0] >> c[1];
-		cout << c[0] << c[1];
 		cube.rotateCube(c[0], c[1]);
-		cube.printEntireCude();
+		//cube.printEntireCude();
+		//cube.printFace(0);
 	}
-	cout << "결과" << endl;
 	cube.printFace(0);
 }
 
