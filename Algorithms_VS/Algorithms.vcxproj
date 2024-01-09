@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="00001.h" />
     <ClInclude Include="16235-Xtimeover!.h" />
+    <ClInclude Include="2110.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
