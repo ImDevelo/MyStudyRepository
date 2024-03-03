@@ -29,5 +29,11 @@
     <ClInclude Include="2110.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="10816.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="10816_2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

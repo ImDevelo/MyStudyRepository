@@ -8,3 +8,5 @@ node_modules/
 /openCV/YOLO/datasets/coco128
 /openCV/YOLO/runs/detect
 /openCV/YOLO-train/datasets/*
+/.vs
+/Algorithms_VS/Algorithms/x64
