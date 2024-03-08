@@ -35,5 +35,20 @@
     <ClInclude Include="10816_2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="9465.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2659.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2628.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="2294.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="9461.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
