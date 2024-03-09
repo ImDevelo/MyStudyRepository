@@ -133,6 +133,7 @@
     <ClInclude Include="00001.h" />
     <ClInclude Include="10816.h" />
     <ClInclude Include="10816_2.h" />
+    <ClInclude Include="16234.h" />
     <ClInclude Include="16235-Xtimeover!.h" />
     <ClInclude Include="2110.h" />
     <ClInclude Include="2294.h" />
