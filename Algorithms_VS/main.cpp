@@ -1,5 +1,5 @@
 #include<iostream>
-#include"16234.h"
+#include"hackerrank01.h"
 
 int main() {
 	std::ios::sync_with_stdio(false);
