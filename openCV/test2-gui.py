@@ -1,53 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
-from PyQt5.QtGui import QIcon, QPainter, QColor, QFont
-from PyQt5.QtCore import Qt, QPoint
-
-class TitleBar(QWidget):
-    def __init__(self, parent):
-        super().__init__()
-        self.parent = parent
-        self.initUI()
-
-    def initUI(self):
-        # 타이틀 텍스트 라벨
-        self.titleLabel = QLabel(self.parent.windowTitle(), self)
-        self.titleLabel.setAlignment(Qt.AlignCenter)
-        self.titleLabel.setStyleSheet("color: #f8f8f2;")
-
-        # 닫기 버튼
-        closeButton = QPushButton('X', self)
-        closeButton.clicked.connect(self.parent.close)
-        closeButton.setStyleSheet("""
-            background-color: #ff5555;
-            color: #f8f8f2;
-            border-radius: 5px;
-            padding: 5px;
-        """)
-
-        # 레이아웃 생성
-        layout = QVBoxLayout()
-        layout.addWidget(self.titleLabel)
-        layout.addWidget(closeButton)
-        layout.setContentsMargins(0, 0, 0, 0)
-
-        self.setLayout(layout)
-
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        painter.setBrush(QColor("#282a36"))
-        painter.drawRect(self.rect())
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            self.dragPos = event.globalPos()
-            event.accept()
-
-    def mouseMoveEvent(self, event):
-        if event.buttons() == Qt.LeftButton:
-            self.parent.move(self.parent.pos() + event.globalPos() - self.dragPos)
-            self.dragPos = event.globalPos()
-            event.accept()
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import Qt
 
 class MyGUI(QWidget):
     def __init__(self):
@@ -62,15 +16,8 @@ class MyGUI(QWidget):
         layout = QVBoxLayout()
         layout.addWidget(self.button)
 
-        # 타이틀 바 생성
-        self.titleBar = TitleBar(self)
-
-        # 위젯에 레이아웃 및 타이틀 바 설정
-        mainLayout = QVBoxLayout()
-        mainLayout.addWidget(self.titleBar)
-        mainLayout.addLayout(layout)
-        mainLayout.setContentsMargins(0, 0, 0, 0)
-        self.setLayout(mainLayout)
+        # 위젯에 레이아웃 설정
+        self.setLayout(layout)
 
         # 윈도우 크기 및 제목 설정
         self.setGeometry(200, 100, 600, 400)  # 위치 (200, 100), 크기 600x400으로 변경
@@ -78,6 +25,8 @@ class MyGUI(QWidget):
 
         # 윈도우 바 숨기기
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
+
+        # todo : 커스텀 상단바 생성하기
 
         # 스타일 시트 적용
         self.setStyleSheet("""
