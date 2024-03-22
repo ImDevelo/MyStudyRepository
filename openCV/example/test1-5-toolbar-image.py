@@ -12,7 +12,7 @@ class MyApp(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        exitAction = QAction(QIcon('img/exit.png'), 'Exit', self)
+        exitAction = QAction(QIcon('../img/exit.png'), 'Exit', self)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit application')
         exitAction.triggered.connect(qApp.quit)

@@ -1,12 +1,27 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel,  QDesktopWidget, QHBoxLayout
-from PyQt5.QtGui import QIcon, QPainter, QColor, QFont
-from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtCore import QPoint, Qt
+from PyQt5.QtWidgets import (
+    QApplication, QHBoxLayout, QLabel, QPushButton,
+    QVBoxLayout, QWidget
+)
 
-class MyTitleBar(QWidget):
+class MainWindow(QWidget):
+
+    def __init__(self):
+        super(MainWindow, self).__init__()
+        self.layout  = QVBoxLayout()
+        self.layout.addWidget(MyBar(self))
+        self.setLayout(self.layout)
+        self.layout.setContentsMargins(0,0,0,0)
+        self.layout.addStretch(-1)
+        self.setMinimumSize(800,600)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.pressing = False
+
+class MyBar(QWidget):
 
     def __init__(self, parent):
-        super(MyTitleBar, self).__init__()
+        super(MyBar, self).__init__()
         self.parent = parent
         print(self.parent.width())
         self.layout = QHBoxLayout()
@@ -51,7 +66,7 @@ class MyTitleBar(QWidget):
         self.pressing = False
 
     def resizeEvent(self, QResizeEvent):
-        super(MyTitleBar, self).resizeEvent(QResizeEvent)
+        super(MyBar, self).resizeEvent(QResizeEvent)
         self.title.setFixedWidth(self.parent.width())
 
     def mousePressEvent(self, event):
@@ -78,37 +93,8 @@ class MyTitleBar(QWidget):
         self.parent.showMinimized()
 
 
-
-class MyApp(QWidget):
-
-    def __init__(self):
-        super().__init__()
-        self.initUI()
-
-    def initUI(self):
-        self.setWindowTitle('Real-time video filtering program')
-        self.setFixedSize(1024, 768)         # 윈도우의 크기를 1024x768으로 고정
-        self.center()                       # 윈도우 크기를 가운데에 위치
-
-        self.layout  = QVBoxLayout()
-        self.layout.addWidget(MyTitleBar(self))
-        self.setLayout(self.layout)
-        self.layout.setContentsMargins(0,0,0,0)
-        self.layout.addStretch(-1)
-        self.setWindowFlags(Qt.FramelessWindowHint)
-        
-        self.show()
-
-
-    def center(self):
-        qr = self.frameGeometry()           # 프레임 위치
-        cp = QDesktopWidget().availableGeometry().center()  #사용자 화면의 가운데 반환
-        qr.moveCenter(cp)                   # 창의 위치를 화면 정가운데로 이동
-        self.move(qr.topLeft())
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    ex = MyApp()
+    mw = MainWindow()
+    mw.show()
     sys.exit(app.exec_())
