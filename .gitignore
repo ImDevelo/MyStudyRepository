@@ -2,3 +2,8 @@
 node_modules/
 */x64/
 */.vs
+
+/openCV/datasets/coco128/images/train2017
+/openCV/datasets/coco128/labels/train2017
+/openCV/YOLO/datasets/coco128
+/openCV/YOLO/runs/detect
