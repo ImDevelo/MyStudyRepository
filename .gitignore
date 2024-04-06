@@ -7,3 +7,4 @@ node_modules/
 /openCV/datasets/coco128/labels/train2017
 /openCV/YOLO/datasets/coco128
 /openCV/YOLO/runs/detect
+/openCV/YOLO-train/datasets/*
