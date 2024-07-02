@@ -136,6 +136,7 @@
     <ClInclude Include="15685.h" />
     <ClInclude Include="16234.h" />
     <ClInclude Include="16235-Xtimeover!.h" />
+    <ClInclude Include="1826.h" />
     <ClInclude Include="2110.h" />
     <ClInclude Include="2294.h" />
     <ClInclude Include="2628.h" />
