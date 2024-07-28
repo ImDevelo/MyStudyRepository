@@ -1,8 +1,13 @@
 #include<iostream>
+#include <vector>
+
 using namespace std;
  
 int main(int argc, char** argv)
 {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);  cout.tie(NULL);
+
     int test_case;
     int T;
     cin>>T;
@@ -12,8 +17,9 @@ int main(int argc, char** argv)
         long long ans = 0;
         
         cin >> N;
-        int* days = new int[N];
 
+        vector<int> days(N, 0);
+        
         for(int i = 0; i < N; i++){
             cin >> days[i];
         }
@@ -26,9 +32,8 @@ int main(int argc, char** argv)
                 ans += price - days[j];
             }
         }
-        delete days;
 
-        printf("#%d %d\n",test_case, ans);
+        cout << "#" << test_case << " " << ans << "\n";
     }
     return 0;
 }
