@@ -10,3 +10,5 @@ node_modules/
 /openCV/YOLO-train/datasets/*
 /.vs
 /Algorithms_VS/Algorithms/x64
+
+*exe
