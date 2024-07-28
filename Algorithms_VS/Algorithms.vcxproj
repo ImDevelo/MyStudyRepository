@@ -143,6 +143,7 @@
     <ClInclude Include="2659.h" />
     <ClInclude Include="9461.h" />
     <ClInclude Include="9465.h" />
+    <ClInclude Include="AC-20955.h" />
     <ClInclude Include="hackerrank01.h" />
     <ClInclude Include="hackerrank02.h" />
   </ItemGroup>
