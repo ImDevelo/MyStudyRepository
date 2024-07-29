@@ -5,31 +5,30 @@
 using namespace std;
 
 const char* get_score(int N, int index){
-    cout << index << " ";
      
     int rank = index / (N / 10);
 
     switch (rank)
     {
-    case 0:
-        return "A+";
-    case 1:
-        return "A0";
-    case 2:
-        return "A-";
-    case 3:
-        return "B+";
-    case 4:
-        return "B0";
-    case 5:
-        return "B-";
-    case 6:
-        return "C+";
-    case 7:
-        return "C0";
-    case 8:
-        return "C-";
     case 9:
+        return "A+";
+    case 8:
+        return "A0";
+    case 7:
+        return "A-";
+    case 6:
+        return "B+";
+    case 5:
+        return "B0";
+    case 4:
+        return "B-";
+    case 3:
+        return "C+";
+    case 2:
+        return "C0";
+    case 1:
+        return "C-";
+    case 0:
         return "D0";
     default:
         break;
@@ -66,7 +65,7 @@ int main(int argc, char** argv)
                 //cout << "target" << target << " || ";
             }
 
-            vec[i] = (score);
+            vec[i] = score;
         }
 
 
