@@ -1,10 +1,16 @@
-#include<iostream>
-#include"AC-20955.h"
+#include <iostream>
+#include <algorithm>
+using namespace std;
 
 int main() {
-	std::ios::sync_with_stdio(false);
-	std::cin.tie(NULL);  std::cout.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
 
-	MySolution();
+    int a, b, c;
+    cin >> a >> b >> c;
 
+    int teams = min(a / 2, b) - max(0, (a + b - min(a / 2, b) * 3 + c - 2) / 3);
+
+    cout << max(0, teams);
+    return 0;
 }
