@@ -1,8 +1,9 @@
 //
 //https://www.acmicpc.net/problem/
+
 #include <iostream>
+
 using namespace std;
-#define MAX 0
 
 void MySolution(){
 
