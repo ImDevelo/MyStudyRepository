@@ -1,4 +1,4 @@
-//º˚πŸ≤¿¡˙ 2
+//Ïà®Î∞îÍº≠Ïßà 2
 //https://www.acmicpc.net/problem/12851
 
 #include <iostream>
@@ -27,10 +27,8 @@ int main() {
         int pos = q.front().first;
         int time = q.front().second;
         q.pop();
-
-        //cout << pos << " " << time << "\n";
-
-        //∏Ò«•
+        
+        //Î™©Ìëú
         if (pos == K) {
             if (method_count == 0) {
                 min_second = time;
@@ -39,12 +37,12 @@ int main() {
             continue;
         }
 
-        // ¡∂∞« √ ∞˙
+        // Ï°∞Í±¥ Ï¥àÍ≥º
         if (method_count != 0 && min_second <= time) {
             continue;
         }
 
-        // 2πË ¡∂∞«
+        // 2Î∞∞ Ï°∞Í±¥
         if (pos * 2 < MAX) {
             if (check[pos * 2] == 0 || check[pos * 2] >= time) {
                 check[pos * 2] = time;
@@ -52,7 +50,7 @@ int main() {
             }
         }
 
-        // ¡ı∞° ¡∂∞«
+        // Ï¶ùÍ∞Ä Ï°∞Í±¥
         if (pos < K) {
             if (check[pos + 1] == 0 || check[pos + 1] >= time) {
                 check[pos + 1] = time;
@@ -60,7 +58,7 @@ int main() {
             }
         }
 
-        // ∞®º“ ¡∂∞«
+        // Í∞êÏÜå Ï°∞Í±¥
         if (pos > 0) {
             if (check[pos - 1] == 0 || check[pos - 1] >= time ) {
                 check[pos - 1] = time;
