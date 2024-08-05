@@ -1,4 +1,4 @@
-﻿//동전 2
+//동전 2
 //https://www.acmicpc.net/problem/2294
 #include <iostream>
 #include <vector>
