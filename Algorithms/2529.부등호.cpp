@@ -1,4 +1,4 @@
-﻿//부등호
+//부등호
 //https://www.acmicpc.net/problem/2529
 #include <iostream>
 #include <vector>
