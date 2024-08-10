@@ -1,4 +1,5 @@
-#pragma once
+//십자카드 문제
+//https://www.acmicpc.net/problem/2659
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -43,16 +44,12 @@ void MySolution() {
 					}
 					int number = 1000 * i + 100 * j + 10 * k + l;
 					
-					
 					if (i == l && ( l < k || l < j )) {
-						//cout << "==========" << number << endl;
 						continue;
 					}
 					else if (i == k && (l < j)) {
-						//cout << "==========" << number << endl;
 						continue;
 					}
-					//cout << count << " " << number << endl;
 					count++;
 					if (number >= cross_number) {
 						find = true;
@@ -63,4 +60,12 @@ void MySolution() {
 		}
 	}
 	cout << count;
+}
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    MySolution();
+
 }

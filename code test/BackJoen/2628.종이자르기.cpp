@@ -1,4 +1,6 @@
-#pragma once
+//종이자르기
+//https://www.acmicpc.net/problem/2628
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -55,4 +57,11 @@ void MySolution() {
 
 	cout << ans_size << endl;
 
+}
+
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);  cout.tie(NULL);
+    MySolution();
 }

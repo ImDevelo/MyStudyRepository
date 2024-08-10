@@ -1,4 +1,4 @@
-#pragma once
+//https://www.acmicpc.net/problem/1826
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -7,34 +7,34 @@
 using namespace std;
 
 int minRefuelStops(int N, vector<pair<int, int>>& stations, int L, int P) {
-    // ÁÖÀ¯¼ÒÀÇ À§Ä¡¿Í ÁÖÀ¯·® Á¤º¸¸¦ Á¤·Ä
+    // ì£¼ìœ ì†Œì˜ ìœ„ì¹˜ì™€ ì£¼ìœ ëŸ‰ ì •ë³´ë¥¼ ì •ë ¬
     sort(stations.begin(), stations.end());
 
-    // ÃÖ´ë Èü (ÁÖÀ¯¼Ò¿¡¼­ ¾òÀ» ¼ö ÀÖ´Â ¿¬·á·®À» ÀúÀå)
+    // ìµœëŒ€ í™ (ì£¼ìœ ì†Œì—ì„œ ì–»ì„ ìˆ˜ ìˆëŠ” ì—°ë£ŒëŸ‰ì„ ì €ì¥)
     priority_queue<int> max_heap;
 
-    // ÇöÀç À§Ä¡¿Í ¿¬·á·®
+    // í˜„ì¬ ìœ„ì¹˜ì™€ ì—°ë£ŒëŸ‰
     int current_position = 0;
     int current_fuel = P;
 
-    // ÁÖÀ¯ È½¼ö
+    // ì£¼ìœ  íšŸìˆ˜
     int refuel_count = 0;
 
     int index = 0;
 
     while (current_position + current_fuel < L) {
-        // ÇöÀç À§Ä¡¿¡¼­ µµ´Ş °¡´ÉÇÑ ¸ğµç ÁÖÀ¯¼Ò¸¦ Èü¿¡ Ãß°¡
+        // í˜„ì¬ ìœ„ì¹˜ì—ì„œ ë„ë‹¬ ê°€ëŠ¥í•œ ëª¨ë“  ì£¼ìœ ì†Œë¥¼ í™ì— ì¶”ê°€
         while (index < N && stations[index].first <= current_position + current_fuel) {
             max_heap.push(stations[index].second);
             index++;
         }
 
-        // ÈüÀÌ ºñ¾îÀÖ´Ù¸é ´õ ÀÌ»ó ÁÖÀ¯¼Ò¿¡ µµ´ŞÇÒ ¼ö ¾øÀ½
+        // í™ì´ ë¹„ì–´ìˆë‹¤ë©´ ë” ì´ìƒ ì£¼ìœ ì†Œì— ë„ë‹¬í•  ìˆ˜ ì—†ìŒ
         if (max_heap.empty()) {
             return -1;
         }
 
-        // °¡Àå ¸¹Àº ¿¬·á¸¦ ¾òÀ» ¼ö ÀÖ´Â ÁÖÀ¯¼Ò¿¡¼­ ÁÖÀ¯
+        // ê°€ì¥ ë§ì€ ì—°ë£Œë¥¼ ì–»ì„ ìˆ˜ ìˆëŠ” ì£¼ìœ ì†Œì—ì„œ ì£¼ìœ 
         current_fuel += max_heap.top();
         max_heap.pop();
         refuel_count++;
@@ -58,4 +58,10 @@ int MySolution() {
     int result = minRefuelStops(N, stations, L, P);
     cout << result << endl;
 
+}
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);  cout.tie(NULL);
+    MySolution();
 }

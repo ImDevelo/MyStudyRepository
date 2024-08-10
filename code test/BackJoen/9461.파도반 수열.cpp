@@ -1,4 +1,6 @@
-#pragma once
+//파도반 수열
+//https://www.acmicpc.net/problem/9461
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -30,4 +32,9 @@ void MySolution() {
 	{
 		TestCase();
 	}
+}
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);  cout.tie(NULL);
+    MySolution();
 }

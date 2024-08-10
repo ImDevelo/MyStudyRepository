@@ -1,4 +1,5 @@
-#pragma once
+//Ïù∏Íµ¨ Ïù¥Îèô
+//https://www.acmicpc.net/problem/16234
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -47,9 +48,9 @@ bool makeAli(vector<vector<int>>& land, vector<vector<bool>>& check, pair<short,
 		}
 	}
 
-	int mean = sum_people / ali.size(); // ∆Ú±∫ ∞ËªÍ
+	int mean = sum_people / ali.size(); // ÌèâÍµ∞ Í≥ÑÏÇ∞
 
-	// ¿Œ±∏¿Ãµø
+	// Ïù∏Íµ¨Ïù¥Îèô
 	if (ali.size() > 1) {
 
 		for (pair<short, short> point : ali) {
@@ -102,4 +103,10 @@ void MySolution() {
 		}
 	}
 	cout << day << "\n";
+}
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);  cout.tie(NULL);
+    MySolution();
 }
