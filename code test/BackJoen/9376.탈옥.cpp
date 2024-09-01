@@ -1,85 +1,130 @@
-//íƒˆì˜¥
 //https://www.acmicpc.net/problem/9376
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <limits.h>
 using namespace std;
 
-#define MAX 100
-char map[MAX][MAX];
-int R, C;
+void test_case() {
+	int R, C;
+	cin >> R >> C;
 
-void BFS(int rs, int cs){
-    int p[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
-    bool check[MAX][MAX];
-    int value[MAX][MAX];
+	vector<vector<int>> arr(R, vector<int>(C));
 
-    queue<int> r, c;
+	vector<pair<int, int>> starting;
 
-    r.push(rs); c.push(cs);
-    check[rs][cs] = true;
-    value[rs][cs] = 0;
+	for (int i = 0; i < R; i++) {
+		for (int j = 0; j < C; j++) {
+			char input;
+			cin >> input;
+			arr[i][j] = input;
+			if (input == '$') {
+				starting.push_back({ i,j });
+			}
+		}
+	}
 
-    int value = 0;
+	priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater< pair<int, pair<int, int>>>> man;
+	vector<vector<int>> check(R, vector<int>(C, 0));
+	int man1_door = 100000, man2_door = 100000;
+	int dr[4] = { 1,-1,0,0 };
+	int dc[4] = { 0,0,1,-1 };
 
-    while (!r.empty())
-    {
-        int r1 = r.front();
-        int c1 = c.front();
-        r.pop(); c.pop();
-        
-        for(int i=0; i<4;i++){
-            int r2 = r1 + p[i][0];
-            int c2 = c1 + p[i][1];
-            if( r2 >= 0 && c2 >= 0 && r2 < R && c2 < C ){
-                if(map[r2][c2] != '*' ){
-                    if(map[r2][c2] == '#'){
-                        
-                        value[r2][c2] = value[r1][c1] + 1;      
-                    }else{
+	man.push({ 0, { starting[0].first,starting[0].second} });
+	check[starting[0].first][starting[0].second] = true;
 
-                    }
+	while (!man.empty())
+	{
+		pair<int, int> pos = man.top().second;
+		int door_c = man.top().first;
+		man.pop();
 
+		if (pos.first == 0 || pos.first == R-1 || pos.second == 0 || pos.first == C-1 ) {
+			man1_door = min(man1_door, door_c);
+			continue;
+		}
 
+		for (int i = 0; i < 4; i++) {
+			int nr = dr[i] + pos.first;
+			int nc = dc[i] + pos.second;
 
-                }
-            }else{ //íƒˆì¶œ ì„±ê³µì‹œ
+			if (arr[nr][nc] != '*' && check[nr][nc] != 1 && door_c < man1_door) {
+				int nd = door_c;
+				if (check[nr][nc] == 0 && arr[nr][nc] == '#') {
+					nd += 1;
+				}
+				man.push({nd, {nr,nc}});
+				check[nr][nc] = 1;
+			}
+		}
+	}
 
-            }
-        }
-    }
-    
+	// »ç¶÷ 1 Å»Ãâ ÈÄ
+	// »ç¶÷ 2 Å»Ãâ ½ÃÀÛ
 
-    
+	man.push({0,{ starting[1].first, starting[1].second }});
+	check[starting[1].first][starting[1].second] = 2;
 
+	while (!man.empty())
+	{
+		pair<int, int> pos = man.top().second;
+		int door_c = man.top().first;
+		man.pop();
 
+		if (pos.first == 0 || pos.first == R - 1 || pos.second == 0 || pos.first == C - 1 ) {
+			man2_door = min(man2_door, door_c);
+			cout << man2_door <<"Å»¿Á2! \n";
+			break;
+		}
+
+		for (int i = 0; i < 4; i++) {
+			int nr = dr[i] + pos.first;
+			int nc = dc[i] + pos.second;
+			
+			if (check[nr][nc] == 1) {
+				if (arr[nr][nc] == '#') {
+					door_c++;
+				}
+
+				man2_door = door_c;
+				break;
+			}
+
+			if (arr[nr][nc] != '*' && check[nr][nc] != 2) {
+
+				cout << "?" << endl;
+
+				int nd = door_c;
+				if (check[nr][nc] == 0 && arr[nr][nc] == '#' && door_c + 1 <= man2_door) {
+					nd += 1;
+				}
+				man.push({ nd, {nr,nc} });
+				check[nr][nc] = 2;
+			}
+		}
+	}
+
+	cout << man1_door + man2_door << "\n";
+	// case 1 °¢ÀÚ ÁÁÀº°÷
+
+	// case 2 ¶È°°Àº ¹®
+
+	// °¢ÀÚ ¶Õ°í °¡´Ù°¡ ¸¸³ª¸é ? ÇØ´ç¿¡ Æí½Â
+
+	// 
 
 }
 
-void escapePrizon(){
 
-    cin >> R >> C;
 
-    for(int i=0; i < R ;i++){
-        for(int j=0; j<C ;j++){
-            cin >> map[i][j];
-        }
-    }
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+
+	int T;
+	cin >> T;
+	for (int i = 0; i < T; i++) {
+		test_case();
+	}
 }
 
-
-void MySolution(){
-    int N;
-    cin >> N ;
-
-    for(int i=0; i<N;i++){
-
-    }
-}
-
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    MySolution();
-
-}
