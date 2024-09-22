@@ -1,147 +1,130 @@
-//에디터
 //https://www.acmicpc.net/problem/1406
 #include <iostream>
+#include <vector>
 #include <string>
 using namespace std;
 
-#include <iostream>
-#include <string>
+class Editor {
+    
+    class Node {
+    public:
+        char data;
+        Node* next = nullptr;
+        Node* prev = nullptr;
+    };
 
-// 노드 클래스 정의
-class Node {
-public:
-    char data;        // 노드에 저장할 데이터 (문자)
-    Node* next;      // 다음 노드를 가리키는 포인터
-    Node* prev;      // 이전 노드를 가리키는 포인터
-
-    // 생성자
-    Node(char value) : data(value), next(nullptr), prev(nullptr) {}
-};
-
-// 양방향 링크드 리스트 클래스 정의
-class LineEditor {
-private:
-    Node* head; // 리스트의 첫 번째 노드를 가리키는 포인터
-    Node* tail; // 리스트의 마지막 노드를 가리키는 포인터
+    Node* head = nullptr;
+    Node* curser = nullptr;
+    Node* last = nullptr;
 
 public:
-    // 생성자
-    LineEditor() : head(nullptr), tail(nullptr) {}
 
-    // 소멸자
-    ~LineEditor() {
-        Node* current = head;
-        Node* nextNode;
-        while (current != nullptr) {
-            nextNode = current->next;
-            delete current;
-            current = nextNode;
+    Editor(string str) {
+        str += '\n';
+        for (char c : str) {
+            Node* newNode = new Node;
+            newNode->data = c;
+
+            if (last == nullptr) {
+                head = newNode;
+            }
+            else {
+                newNode->prev = last;
+                last->next = newNode;
+            }
+            last = newNode;
+        }
+        curser = last;
+    }
+
+    void cmdL() {
+        if (curser->prev != nullptr) {
+            curser = curser->prev;
         }
     }
 
-    // 리스트의 끝에 새 노드 추가
-    void append(char value) {
-        Node* newNode = new Node(value);
-        if (head == nullptr) {
+    void cmdD() {
+        if (curser->next != nullptr) {
+            curser = curser->next;
+        }
+    }
+
+    void cmdB() {
+        if (curser->prev != nullptr) {
+            Node* deleteNode = curser->prev;
+            Node* prevNode = deleteNode->prev;
+            curser->prev = prevNode;
+            if (prevNode == nullptr) {
+                head = curser;
+            }
+            else {
+                prevNode->next = curser;
+            }
+            delete deleteNode;
+        }
+    }
+
+    void cmdP(char n) {
+        Node* newNode = new Node;
+        newNode->data = n;
+        newNode->next = curser;
+        newNode->prev = curser->prev;
+        if (curser->prev != nullptr) {
+            curser->prev->next = newNode;
+        }
+        curser->prev = newNode;
+
+        if (curser == head) {
             head = newNode;
-            tail = newNode;
-        } else {
-            tail->next = newNode;
-            newNode->prev = tail;
-            tail = newNode;
         }
+        
     }
 
-    // 리스트의 시작에 새 노드 추가
-    void prepend(char value) {
-        Node* newNode = new Node(value);
-        if (head == nullptr) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            newNode->next = head;
-            head->prev = newNode;
-            head = newNode;
+    void print() {
+        
+        Node* pointer = head;
+        while (pointer != nullptr)
+        {
+            cout << pointer->data;
+            pointer = pointer->next;
         }
-    }
-
-    // 리스트의 모든 노드 출력
-    void printListForward() const {
-        Node* temp = head;
-        while (temp != nullptr) {
-            std::cout << temp->data << " <-> ";
-            temp = temp->next;
-        }
-        std::cout << "nullptr" << std::endl;
-    }
-
-    // 리스트의 모든 노드 출력 (역방향)
-    void printListBackward() const {
-        Node* temp = tail;
-        while (temp != nullptr) {
-            std::cout << temp->data << " <-> ";
-            temp = temp->prev;
-        }
-        std::cout << "nullptr" << std::endl;
     }
 };
 
-
-
-int main(){
+int main() {
     ios::sync_with_stdio(false);
-    cin.tie(NULL);  cout.tie(NULL);
+    cin.tie(NULL); cout.tie(NULL);
 
-    LineEditor list;
-    std::string input;
+    string str;
+    int T;
+    cin >> str >> T;
 
-    // 사용자로부터 문자열 입력 받기
-    std::cout << "Enter a string: ";
-    std::getline(std::cin, input);
+    Editor editor(str);
 
-    // 입력받은 문자열의 각 문자 리스트에 추가
-    for (char c : input) {
-        list.append(c);
-    }
+    while (T--)
+    {
+        char cmd;
+        cin >> cmd;
 
-    // 리스트 출력
-    std::cout << "List Forward: ";
-    list.printListForward();
-    std::cout << "List Backward: ";
-    list.printListBackward();
-
-    for(int i=0; i<10; i++){
-        char command;
-        cin >> command;
-
-        switch (command)
+        switch (cmd)
         {
         case 'L':
-            if(1 > 0){
-
-            }
+            editor.cmdL();
             break;
         case 'D':
-
+            editor.cmdD();
             break;
-
         case 'B':
-
+            editor.cmdB();
             break;
-
         case 'P':
-
+            char n;
+            cin >> n;
+            editor.cmdP(n);
             break;
-
-        
         default:
-
-
             break;
         }
-
-
-
-
     }
+    editor.print();
 }
