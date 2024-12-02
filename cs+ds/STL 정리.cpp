@@ -1,73 +1,140 @@
 #include <iostream>
 #include <vector>
-#include <vector>
 #include <list>
 #include <deque>
 #include <set>
 #include <unordered_set>
 #include <map>
-#include <string>
 #include <unordered_map>
+#include <string>
 #include <algorithm>
 
 using namespace std;
 
-void STLvector(){
-    // 초기화 방식
-    std::vector<int> vec = {1, 2, 3, 4, 5};
-    std::vector<int> vec2(5, 10);
-    std::vector<int> vec3(vec2);
-    std::vector<int> vec4(vec3.begin(), vec3.begin() + 3);
+// 1. Vector 관련 메서드
+void demonstrateVector() {
+	vector<int> vec = { 1, 2, 3 }; // 초기화
+	vector<int> vec2(5, 10);     // 5개의 10으로 초기화
+	vec.push_back(4);            // 삽입
+	vec.pop_back();              // 마지막 요소 제거
+	vec.insert(vec.begin() + 1, 99); // 특정 위치에 삽입
+	vec.erase(vec.begin());      // 특정 위치 삭제
+	cout << "Vector Size: " << vec.size() << ", Capacity: " << vec.capacity() << endl;
 
-    
+	vec.reserve(20);             // 용량 증가
+	vec.shrink_to_fit();         // 용량 축소
+	cout << "Vector Element Access: " << vec[0] << ", " << vec.at(1) << ", Front: " << vec.front() << ", Back: " << vec.back() << endl;
 
-    vec.push_back(1);
-    vec.pop_back();
-    vec.size();
-    vec.empty();
+	sort(vec.begin(), vec.end()); // 정렬
+	vector<int> vec3 = { 10, 20, 30 };
+	vec.swap(vec3);               // 교환
 
-    // 삽입 및 삭제
-    vec.insert(vec.begin() + 2, 99);
-    vec.erase(vec.begin() + 4);
-
-    std::vector<int> vec6 = {1, 2, 3, 4, 5};
-    vec6.reserve(10); // 용량을 늘림
-    vec6.shrink_to_fit(); // 용량을 실제 크기에 맞게 줄임
-
-    std::vector<int> vec9;
-    vec9.assign(7, 100); // 7개의 100으로 초기화
-
-    vector<std::pair<int, int>> vec10;
-    vec10.emplace(vec10.begin(), 1, 2); // (1,2) 쌍을 vec10의 처음에 삽입
-
-    std::vector<int> vec7 = {1, 2, 3};
-    std::vector<int> vec8 = {4, 5, 6};
-    vec7.swap(vec8); // vec7과 vec8의 내용을 교환
-
-
-    //벡터 요소 참조
-    for (vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
-        cout << *it << " ";
-    }
-
-    // 최종 벡터 출력
-    for (int val : vec) {
-        cout << val << " ";
-    }
+	cout << "Vector Elements: ";
+	for (int val : vec) cout << val << " ";
+	cout << endl;
 }
 
+// 2. List 관련 메서드
+void demonstrateList() {
+	list<int> lst = { 1, 2, 3 }; // 초기화
+	lst.push_back(4);          // 뒤에 삽입
+	lst.push_front(0);         // 앞에 삽입
+	lst.pop_back();            // 뒤에서 제거
+	lst.pop_front();           // 앞에서 제거
+	lst.insert(lst.begin(), 99); // 삽입
+	lst.erase(lst.begin());    // 삭제
 
+	lst.sort();                // 정렬
+	lst.reverse();             // 반전
 
+	cout << "List Elements: ";
+	for (int val : lst) cout << val << " ";
+	cout << endl;
+}
 
-int main(){
+// 3. Deque 관련 메서드
+void demonstrateDeque() {
+	deque<int> dq = { 1, 2, 3 }; // 초기화
+	dq.push_back(4);           // 뒤에 삽입
+	dq.push_front(0);          // 앞에 삽입
+	dq.pop_back();             // 뒤에서 제거
+	dq.pop_front();            // 앞에서 제거
 
-    STLvector();
-    
-    list<int> lst = {1, 2, 3, 4, 5};
-    deque<int> dq = {1, 2, 3, 4, 5};
-    unordered_set<int> us = {1, 2, 3, 4, 5};
+	cout << "Deque Elements: ";
+	for (int val : dq) cout << val << " ";
+	cout << endl;
+}
 
-    unordered_map<int, string> um = {{1, "one"}, {2, "two"}, {3, "three"}};
+// 4. Set 관련 메서드
+void demonstrateSet() {
+	set<int> s = { 5, 3, 1, 4, 2 }; // 초기화 및 정렬
+	s.insert(6);                  // 삽입
+	s.erase(3);                   // 삭제
 
-    return 0;
+	cout << "Set Elements: ";
+	for (int val : s) cout << val << " ";
+	cout << endl;
+}
+
+// 5. Unordered Set 관련 메서드
+void demonstrateUnorderedSet() {
+	unordered_set<int> us = { 5, 3, 1, 4, 2 }; // 초기화
+	us.insert(6);                            // 삽입
+	us.erase(3);                             // 삭제
+
+	cout << "Unordered Set Elements: ";
+	for (int val : us) cout << val << " ";
+	cout << endl;
+}
+
+// 6. Map 관련 메서드
+void demonstrateMap() {
+	map<int, string> m = { {1, "one"}, {2, "two"}, {3, "three"} }; // 초기화
+	m[4] = "four";                                              // 삽입
+	m.erase(2);                                                 // 삭제
+
+	cout << "Map Elements: ";
+	for (auto &[key, value] : m) cout << key << "->" << value << " ";
+	cout << endl;
+}
+
+// 7. Unordered Map 관련 메서드
+void demonstrateUnorderedMap() {
+	unordered_map<int, string> um = { {1, "one"}, {2, "two"}, {3, "three"} }; // 초기화
+	um[4] = "four";                                                        // 삽입
+	um.erase(2);                                                           // 삭제
+
+	cout << "Unordered Map Elements: ";
+	for (auto &[key, value] : um) cout << key << "->" << value << " ";
+	cout << endl;
+}
+
+// 8. String 관련 메서드
+void demonstrateString() {
+	string str = "hello";         // 초기화
+	str += " world";              // 연결
+	str.insert(5, ",");           // 삽입
+	str.erase(5, 1);              // 삭제
+	str.replace(0, 5, "Hi");      // 대체
+	cout << "String: " << str << endl;
+
+	cout << "Substring: " << str.substr(0, 2) << endl; // 부분 문자열
+	cout << "Find 'world': " << str.find("world") << endl; // 검색
+
+	int num = stoi("123");        // 문자열 -> 정수 변환
+	string numStr = to_string(456); // 정수 -> 문자열 변환
+	cout << "Converted: " << num << ", " << numStr << endl;
+}
+
+// Main 함수
+int main() {
+	demonstrateVector();
+	demonstrateList();
+	demonstrateDeque();
+	demonstrateSet();
+	demonstrateUnorderedSet();
+	demonstrateMap();
+	demonstrateUnorderedMap();
+	demonstrateString();
+	return 0;
 }
